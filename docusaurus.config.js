@@ -45,6 +45,19 @@ const config = {
         ],
     ],
 
+    plugins: [
+        [
+          'content-docs',
+          /** @type {import('@docusaurus/plugin-content-docs').Options} */
+          ({
+            id: 'qa',
+            path: 'qa',
+            routeBasePath: '/qa',
+            sidebarPath: require.resolve('./sidebarsQa.js'),
+          }),
+        ],
+      ],
+
     themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
@@ -57,13 +70,15 @@ const config = {
                 items: [
                     {
                         label: '文档',
-                        to: 'docs/doc',
+                        to: 'docs',
                         position: 'right',
                     },
                     {
                         label: '常见问题',
-                        to: 'docs/qa',
+                        type: 'doc',
+                        docId: 'index',
                         position: 'right',
+                        docsPluginId: 'qa',
                     }, {
                         href: 'https://github.com/alibaba/easyexcel',
                         label: 'GitHub',
@@ -87,7 +102,7 @@ const config = {
                             },
                             {
                                 label: 'Second Doc',
-                                to: 'docs/doc2',
+                                to: 'docs/',
                             },
                         ],
                     },

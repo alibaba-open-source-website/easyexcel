@@ -1,0 +1,10 @@
+{
+  "version.label": {
+    "message": "2.x",
+    "description": "The label for version 2.x"
+  },
+  "sidebar.tutorialSidebar.category.quickstart": {
+    "message": "quickstart",
+    "description": "The label for category quickstart in sidebar tutorialSidebar"
+  }
+}

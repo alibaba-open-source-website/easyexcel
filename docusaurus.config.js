@@ -27,7 +27,7 @@ const config = {
             /** @type {import('@docusaurus/preset-classic').Options} */
             ({
                 docs: {
-                    sidebarPath: require.resolve('./config/sidebars.js'),
+                    sidebarPath: require.resolve('./sidebars.js'),
                     // Please change this to your repo.
                     editUrl:
                         'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
@@ -57,12 +57,12 @@ const config = {
                 items: [
                     {
                         label: '文档',
-                        to: 'docs',
+                        to: 'docs/doc',
                         position: 'right',
                     },
                     {
                         label: '常见问题',
-                        to: 'qa',
+                        to: 'docs/qa',
                         position: 'right',
                     }, {
                         href: 'https://github.com/alibaba/easyexcel',

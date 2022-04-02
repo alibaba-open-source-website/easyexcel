@@ -31,6 +31,17 @@ const config = {
                     // Please change this to your repo.
                     editUrl:
                         'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                    lastVersion: 'current',
+                    versions: {
+                        "current": {
+                            label: "3.x",
+                            path: "3.x",
+                        },
+                        "2.x": {
+                            label: "2.x",
+                            path: "2.x",
+                        },
+                    }
                 },
                 blog: {
                     showReadingTime: true,
@@ -53,10 +64,16 @@ const config = {
             id: 'qa',
             path: 'qa',
             routeBasePath: '/qa',
-            sidebarPath: require.resolve('./sidebarsQa.js'),
+            sidebarPath: require.resolve('./sidebars.js'),
           }),
         ],
       ],
+
+
+    i18n: {
+        defaultLocale: "zh",
+        locales: ["zh", "en"],
+    },
 
     themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -69,9 +86,10 @@ const config = {
                 },
                 items: [
                     {
-                        label: '文档',
-                        to: 'docs',
+                        type: 'doc',
+                        docId: 'index',
                         position: 'right',
+                        label: '文档',
                     },
                     {
                         label: '常见问题',
@@ -79,7 +97,19 @@ const config = {
                         docId: 'index',
                         position: 'right',
                         docsPluginId: 'qa',
-                    }, {
+                    },
+
+                    {
+                        type: 'docsVersionDropdown',
+                        position: 'right',
+                        dropdownActiveClassDisabled: true
+                    },
+
+                    {
+                        type: "localeDropdown",
+                        position: "right",
+                    },
+                    {
                         href: 'https://github.com/alibaba/easyexcel',
                         label: 'GitHub',
                         position: 'right',

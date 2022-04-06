@@ -3,8 +3,8 @@
     "message": "2.x",
     "description": "The label for version 2.x"
   },
-  "sidebar.tutorialSidebar.category.quickstart": {
-    "message": "quickstart",
-    "description": "The label for category quickstart in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.快速开始": {
+    "message": "快速开始",
+    "description": "The label for category 快速开始 in sidebar tutorialSidebar"
   }
 }

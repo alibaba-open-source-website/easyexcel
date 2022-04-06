@@ -129,11 +129,11 @@ const config = {
                         items: [
                             {
                                 label: 'Style Guide',
-                                to: 'docs/',
+                                to: 'docs/3.x/',
                             },
                             {
                                 label: 'Second Doc',
-                                to: 'docs/',
+                                to: 'docs/3.x/',
                             },
                         ],
                     },

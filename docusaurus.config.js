@@ -206,6 +206,7 @@ const config = {
             {
                 // `hashed` is recommended as long-term-cache of index file is possible.
                 hashed: true,
+                language: ["en", "zh"],
             },
         ],
     ],

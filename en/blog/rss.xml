@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Easy Excel Blog</title>
-        <link>https://your-docusaurus-test-site.com/easyexcel/en/blog</link>
+        <link>https://your-docusaurus-test-site.com/en/blog</link>
         <description>Easy Excel Blog</description>
         <lastBuildDate>Wed, 29 May 2019 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,7 +10,7 @@
         <language>en</language>
         <item>
             <title><![CDATA[Long Blog Post]]></title>
-            <link>https://your-docusaurus-test-site.com/easyexcel/en/blog/long-blog-post</link>
+            <link>https://your-docusaurus-test-site.com/en/blog/long-blog-post</link>
             <guid>long-blog-post</guid>
             <pubDate>Wed, 29 May 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[This is the summary of a very long blog post,]]></description>
@@ -20,7 +20,7 @@
         </item>
         <item>
             <title><![CDATA[First Blog Post]]></title>
-            <link>https://your-docusaurus-test-site.com/easyexcel/en/blog/first-blog-post</link>
+            <link>https://your-docusaurus-test-site.com/en/blog/first-blog-post</link>
             <guid>first-blog-post</guid>
             <pubDate>Tue, 28 May 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet]]></description>

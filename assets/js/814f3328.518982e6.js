@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkeasyexcel=self.webpackChunkeasyexcel||[]).push([[535],{5641:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Long Blog Post","permalink":"/easyexcel/blog/long-blog-post"},{"title":"First Blog Post","permalink":"/easyexcel/blog/first-blog-post"}]}')}}]);

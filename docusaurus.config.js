@@ -12,9 +12,9 @@
 /** @type {import('@docusaurus/types').Config} */
 const config = {
     title: 'Easy Excel',
-    tagline: 'The tagline of my site',
+    tagline: '快速、简洁、解决大文件内存溢出的java处理Excel工具',
     url: 'https://your-docusaurus-test-site.com',
-    baseUrl: '/easyexcel/',
+    baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
@@ -123,80 +123,13 @@ const config = {
             },
             footer: {
                 style: 'dark',
-                links: [
-                    {
-                        title: 'Learn',
-                        items: [
-                            {
-                                label: 'Style Guide',
-                                to: 'docs/3.x/',
-                            },
-                            {
-                                label: 'Second Doc',
-                                to: 'docs/3.x/',
-                            },
-                        ],
-                    },
-                    {
-                        title: 'Community',
-                        items: [
-                            {
-                                label: 'Stack Overflow',
-                                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-                            },
-                            {
-                                label: 'Twitter',
-                                href: 'https://twitter.com/docusaurus',
-                            },
-                            {
-                                label: 'Discord',
-                                href: 'https://discordapp.com/invite/docusaurus',
-                            },
-                        ],
-                    },
-                    {
-                        title: 'More',
-                        items: [
-                            {
-                                label: 'Blog',
-                                to: 'blog',
-                            },
-                            {
-                                label: 'GitHub',
-                                href: 'https://github.com/facebook/docusaurus',
-                            },
-                        ],
-                    },
-                    {
-                        title: 'Legal',
-                        // Please do not remove the privacy and terms, it's a legal requirement.
-                        items: [
-                            {
-                                label: 'Privacy',
-                                href: 'https://opensource.facebook.com/legal/privacy/',
-                            },
-                            {
-                                label: 'Terms',
-                                href: 'https://opensource.facebook.com/legal/terms/',
-                            },
-                            {
-                                label: 'Data Policy',
-                                href: 'https://opensource.facebook.com/legal/data-policy/',
-                            },
-                            {
-                                label: 'Cookie Policy',
-                                href: 'https://opensource.facebook.com/legal/cookie-policy/',
-                            },
-                        ],
-                    },
-                ],
                 logo: {
-                    alt: 'Facebook Open Source Logo',
-                    src: 'img/oss_logo.png',
-                    href: 'https://opensource.facebook.com',
+                    alt: 'Alibaba Open Source Logo',
+                    src: 'img/opensource_logo.png',
+                    href: 'https://opensource.alibaba.com',
                 },
                 // Please do not remove the credits, help to publicize Docusaurus :)
-                copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc. Built with Docusaurus.`,
+                copyright: `Copyright © ${new Date().getFullYear()} Alibaba, Inc. Built with Docusaurus.`,
             },
         }),
 

@@ -14,7 +14,7 @@ const config = {
     title: 'Easy Excel',
     tagline: 'The tagline of my site',
     url: 'https://your-docusaurus-test-site.com',
-    baseUrl: '/',
+    baseUrl: '/easyexcel/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',

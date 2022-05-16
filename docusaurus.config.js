@@ -78,6 +78,11 @@ const config = {
     themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
+            /** 这里设置 支持```java ``` 这种代码块的样式，详细文档参照： https://www.docusaurus.cn/docs/markdown-features/code-blocks*/
+            prism: {
+                additionalLanguages: ['java'],
+            },
+            metadata: [{name: 'keywords', content: 'cooking, blog'}],
             navbar: {
                 title: 'Easy Excel',
                 logo: {
@@ -122,7 +127,6 @@ const config = {
                 ],
             },
             footer: {
-                style: 'dark',
                 logo: {
                     alt: 'Alibaba Open Source Logo',
                     src: 'img/opensource_logo.png',

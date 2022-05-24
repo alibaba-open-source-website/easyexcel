@@ -52,6 +52,10 @@ const config = {
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
                 },
+                gtag: {
+                    trackingID: 'G-CKCNEFWX6M',
+                    anonymizeIP: true,
+                },
             }),
         ],
     ],
@@ -81,12 +85,6 @@ const config = {
             /** 这里设置 支持```java ``` 这种代码块的样式，详细文档参照： https://www.docusaurus.cn/docs/markdown-features/code-blocks*/
             prism: {
                 additionalLanguages: ['java'],
-            },
-            googleAnalytics: {
-                /**
-                 * 设置googleAnalytics的id
-                 */
-                trackingID: 'G-CKCNEFWX6M',
             },
             metadata: [{name: 'keywords', content: 'cooking, blog'}],
             navbar: {

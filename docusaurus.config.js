@@ -82,6 +82,12 @@ const config = {
             prism: {
                 additionalLanguages: ['java'],
             },
+            googleAnalytics: {
+                /**
+                 * 设置googleAnalytics的id
+                 */
+                trackingID: 'G-CKCNEFWX6M',
+            },
             metadata: [{name: 'keywords', content: 'cooking, blog'}],
             navbar: {
                 title: 'Easy Excel',

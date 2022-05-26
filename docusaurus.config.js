@@ -28,9 +28,8 @@ const config = {
             ({
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
-                    // Please change this to your repo.
-                    editUrl:
-                        'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                    // 这里写自己的文档编辑地址
+                    editUrl: 'https://github.com/alibaba-open-source-website/easyexcel',
                     lastVersion: 'current',
                     versions: {
                         "current": {
@@ -45,9 +44,8 @@ const config = {
                 },
                 blog: {
                     showReadingTime: true,
-                    // Please change this to your repo.
-                    editUrl:
-                        'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                    // 这里写自己的文档编辑地址
+                    editUrl: 'https://github.com/alibaba-open-source-website/easyexcel',
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
@@ -63,16 +61,16 @@ const config = {
 
     plugins: [
         [
-          'content-docs',
-          /** @type {import('@docusaurus/plugin-content-docs').Options} */
-          ({
-            id: 'qa',
-            path: 'qa',
-            routeBasePath: '/qa',
-            sidebarPath: require.resolve('./sidebars.js'),
-          }),
+            'content-docs',
+            /** @type {import('@docusaurus/plugin-content-docs').Options} */
+            ({
+                id: 'qa',
+                path: 'qa',
+                routeBasePath: '/qa',
+                sidebarPath: require.resolve('./sidebars.js'),
+            }),
         ],
-      ],
+    ],
 
 
     i18n: {
@@ -83,11 +81,18 @@ const config = {
     themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
-            /** 这里设置 支持```java ``` 这种代码块的样式，详细文档参照： https://www.docusaurus.cn/docs/markdown-features/code-blocks*/
+            //  这里设置 支持```java ``` 这种代码块的样式，详细文档参照： https://www.docusaurus.cn/docs/markdown-features/code-blocks
             prism: {
                 additionalLanguages: ['java'],
             },
-            metadata: [{name: 'keywords', content: 'cooking, blog'}],
+            // 这里设置关键字 和描述 ，方便给搜索引擎收录
+            metadata: [
+                {
+                    name: 'keywords',
+                    content: 'Excel,Easy Excel,easyexcel 官方,easyexcel,Java,xls,xlsx,csv,省内存,简单,读excel,写excel,解析Excel,poi,oom,OutOfMemoryError'
+                },
+                {name: 'description', content: '快速、简洁、解决大文件内存溢出的java处理Excel工具'},
+            ],
             navbar: {
                 title: 'Easy Excel',
                 logo: {

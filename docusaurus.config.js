@@ -64,7 +64,16 @@ const config = {
                 path: 'community',
                 routeBasePath: 'community',
                 sidebarPath: require.resolve('./sidebarsCommunity.js'),
-                // ... other options
+            },
+        ],
+        [
+            // 常见问题
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'qa',
+                path: 'qa',
+                routeBasePath: 'qa',
+                sidebarPath: require.resolve('./sidebarsQa.js'),
             },
         ],
     ],
@@ -72,8 +81,8 @@ const config = {
     themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
-            //  这里设置 支持```java ``` 这种代码块的样式，详细文档参照： https://www.docusaurus.cn/docs/markdown-features/code-blocks
             prism: {
+                //  这里设置 支持```java ``` 这种代码块的样式，详细文档参照： https://www.docusaurus.cn/docs/markdown-features/code-blocks
                 additionalLanguages: ['java'],
             },
             // 这里设置关键字 和描述 ，方便给搜索引擎收录
@@ -92,6 +101,8 @@ const config = {
                 logo: {
                     alt: 'Easy Excel',
                     src: 'img/logo.png',
+                    href: 'https://easyexcel.opensource.alibaba.com/',
+                    target: '_self',
                 },
                 items: [
                     {
@@ -107,10 +118,11 @@ const config = {
                         label: 'API',
                     },
                     {
-                        type: 'doc',
-                        docId: 'qa/index',
-                        position: 'right',
                         label: '常见问题',
+                        type: 'doc',
+                        docId: 'index',
+                        position: 'right',
+                        docsPluginId: 'qa',
                     },
                     {
                         label: '社区',
@@ -124,7 +136,6 @@ const config = {
                         position: 'right',
                         dropdownActiveClassDisabled: true
                     },
-
                     {
                         href: 'https://github.com/alibaba/easyexcel',
                         label: 'GitHub',

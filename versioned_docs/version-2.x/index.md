@@ -9,7 +9,7 @@ github地址:[https://github.com/alibaba/easyexcel](https://github.com/alibaba/e
 开源项目不容易，如果觉得本项目对您的工作还是有帮助的话，请在帮忙在<a target="_blank" href='https://github.com/alibaba/easyexcel'><img src="https://img.shields.io/github/stars/alibaba/easyexcel.svg?style=flat-square&label=Stars&logo=github" alt="github star"/></a>点个★Star。
 
 ## 常见问题
-[常见问题](./qa)
+[常见问题](/qa)
 
 ## 官方网站
 [https://easyexcel.opensource.alibaba.com/](https://easyexcel.opensource.alibaba.com/)

@@ -7,9 +7,9 @@ sidebar_position: 3
 DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/fill/FillTest.java](https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/fill/FillTest.java)
 ## 最简单的填充
 ### 模板
-![img](/img/2.x/quickstart/fill/simpleFillTemplate.png)
+![img](/img/quickstart/fill/simpleFillTemplate.png)
 ### 最终效果
-![img](/img/2.x/quickstart/fill/simpleFill.png)
+![img](/img/quickstart/fill/simpleFill.png)
 ### 最简单的填充的对象
 ```java
 @Data
@@ -51,9 +51,9 @@ public class FillData {
 
 ## 填充列表
 ### 模板
-![img](/img/2.x/quickstart/fill/listFillTemplate.png)
+![img](/img/quickstart/fill/listFillTemplate.png)
 ### 最终效果
-![img](/img/2.x/quickstart/fill/listFill.png)
+![img](/img/quickstart/fill/listFill.png)
 ### 对象
 参照：[最简单的填充的对象](#最简单的填充的对象)
 ### 代码
@@ -88,9 +88,9 @@ public class FillData {
 
 ## 复杂的填充
 ### 模板
-![img](/img/2.x/quickstart/fill/complexFillTemplate.png)
+![img](/img/quickstart/fill/complexFillTemplate.png)
 ### 最终效果
-![img](/img/2.x/quickstart/fill/complexFill.png)
+![img](/img/quickstart/fill/complexFill.png)
 ### 对象
 参照：[最简单的填充的对象](#最简单的填充的对象)
 ### 代码
@@ -127,9 +127,9 @@ public class FillData {
 
 ## 数据量大的复杂填充
 ### 模板
-![img](/img/2.x/quickstart/fill/complexFillWithTableTemplate.png)
+![img](/img/quickstart/fill/complexFillWithTableTemplate.png)
 ### 最终效果
-![img](/img/2.x/quickstart/fill/complexFillWithTable.png)
+![img](/img/quickstart/fill/complexFillWithTable.png)
 ### 对象
 参照：[最简单的填充的对象](#最简单的填充的对象)
 ### 代码
@@ -181,9 +181,9 @@ public class FillData {
 
 ## 横向的填充
 ### 模板
-![img](/img/2.x/quickstart/fill/horizontalFillTemplate.png)
+![img](/img/quickstart/fill/horizontalFillTemplate.png)
 ### 最终效果
-![img](/img/2.x/quickstart/fill/horizontalFill.png)
+![img](/img/quickstart/fill/horizontalFill.png)
 ### 对象
 参照：[最简单的填充的对象](#最简单的填充的对象)
 ### 代码

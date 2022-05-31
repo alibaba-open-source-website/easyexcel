@@ -5,7 +5,7 @@ sidebar_position: 1
 ## 自己查看常见问题
 [常见问题](/qa)
 ## 通过钉钉或者QQ获取帮助
-由于公司不允许使用QQ，所以建议加入钉钉。
+由于公司不允许使用QQ，所以建议加入钉钉。   
 [QQ1群(已满): 662022184](https://jq.qq.com/?_wv=1027&k=1T21jJxh)  
 [QQ2群(已满): 1097936804](https://jq.qq.com/?_wv=1027&k=j5zEy6Xl)  
 [QQ3群(已满): 453928496](https://qm.qq.com/cgi-bin/qm/qr?k=e2ULsA5A0GldhV2CXJ8sIbAyu9I6qqs7&jump_from=webapi)  

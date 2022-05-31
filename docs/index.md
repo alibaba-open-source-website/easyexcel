@@ -9,20 +9,23 @@ github地址:[https://github.com/alibaba/easyexcel](https://github.com/alibaba/e
 开源项目不容易，如果觉得本项目对您的工作还是有帮助的话，请在帮忙在<a target="_blank" href='https://github.com/alibaba/easyexcel'><img src="https://img.shields.io/github/stars/alibaba/easyexcel.svg?style=flat-square&label=Stars&logo=github" alt="github star"/></a>点个★Star。
 
 ## 常见问题
-[常见问题](./qa)
+[常见问题](/qa)
+
+## 官方网站
+[https://easyexcel.opensource.alibaba.com/](https://easyexcel.opensource.alibaba.com/)
 
 ### 联系方式
-[QQ群: 662022184](//shang.qq.com/wpa/qunwpa?idkey=53d9d821b0833e3c14670f007488a61e300f00ff4f1b81fd950590d90dd80f80)
-[钉钉群: 21960511](https://qr.dingtalk.com/action/joingroup?code=v1,k1,cchz6k12ci9B08NNqhNRFGXocNVHrZtW0kaOtTKg/Rk=&_dt_no_comment=1&origin=11)
-#### 因为公司不方便用QQ，所以建议加钉钉群
+[如何获取支持](/community/support)
 
-### 64M内存1分钟内读取75M(46W行25列)的Excel
-当然还有急速模式能更快，但是内存占用会在100M多一点
-![img](/img/2.x/large.png)
+## 64M内存20秒读取75M(46W行25列)的Excel（3.0.2+版本）
+当然还有极速模式能更快，但是内存占用会在100M多一点
+![img](/img/large_v3.0.x.png)
 
-### 快速开始
-#### 读Excel
-DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/read/ReadTest.java](https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/read/ReadTest.java)
+## 维护者
+姬朋飞（玉霄)、庄家钜、怀宇
+## 快速开始
+### 读Excel
+DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/master/src/test/java/com/alibaba/easyexcel/demo/read/ReadTest.java](/src/test/java/com/alibaba/easyexcel/test/demo/read/ReadTest.java)
 
 ```java
     /**
@@ -39,8 +42,8 @@ DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/j
     }
 ```
 
-#### 写Excel
-DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/write/WriteTest.java](https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/write/WriteTest.java)
+### 写Excel
+DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/master/src/test/java/com/alibaba/easyexcel/test/demo/write/WriteTest.java](/src/test/java/com/alibaba/easyexcel/test/demo/write/WriteTest.java)
 ```java
     /**
      * 最简单的写
@@ -56,23 +59,26 @@ DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/j
     }
 ```
 
-#### web上传、下载
-DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/web/WebTest.java](https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/web/WebTest.java)
+### web上传、下载
+DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/master/src/test/java/com/alibaba/easyexcel/test/demo/web/WebTest.java](/src/test/java/com/alibaba/easyexcel/test/demo/web/WebTest.java)
 ```java
- /**
+   /**
      * 文件下载（失败了会返回一个有部分数据的Excel）
-     * <p>1. 创建excel对应的实体对象 参照{@link DownloadData}
-     * <p>2. 设置返回的 参数
-     * <p>3. 直接写，这里注意，finish的时候会自动关闭OutputStream,当然你外面再关闭流问题不大
+     * <p>
+     * 1. 创建excel对应的实体对象 参照{@link DownloadData}
+     * <p>
+     * 2. 设置返回的 参数
+     * <p>
+     * 3. 直接写，这里注意，finish的时候会自动关闭OutputStream,当然你外面再关闭流问题不大
      */
     @GetMapping("download")
     public void download(HttpServletResponse response) throws IOException {
         // 这里注意 有同学反应使用swagger 会导致各种问题，请直接用浏览器或者用postman
-        response.setContentType("application/vnd.ms-excel");
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         response.setCharacterEncoding("utf-8");
         // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系
-        String fileName = URLEncoder.encode("测试", "UTF-8");
-        response.setHeader("Content-disposition", "attachment;filename=" + fileName + ".xlsx");
+        String fileName = URLEncoder.encode("测试", "UTF-8").replaceAll("\\+", "%20");
+        response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + ".xlsx");
         EasyExcel.write(response.getOutputStream(), DownloadData.class).sheet("模板").doWrite(data());
     }
 

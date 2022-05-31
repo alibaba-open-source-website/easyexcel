@@ -21,7 +21,7 @@ sidebar_position: 2
 DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/write/WriteTest.java](https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/write/WriteTest.java)
 ## 最简单的写
 ### excel示例
-![img](/img/2.x/quickstart/write/simpleWrite.png)
+![img](/img/quickstart/write/simpleWrite.png)
 ### 最简单的写的对象
 ```java
 @Data
@@ -67,7 +67,7 @@ public class DemoData {
 
 ## 根据参数只导出指定列
 ### excel示例
-![img](/img/2.x/quickstart/write/simpleWrite.png)
+![img](/img/quickstart/write/simpleWrite.png)
 ### 对象
 参照：[最简单的写的对象](#最简单的写的对象)
 ### 代码
@@ -106,7 +106,7 @@ public class DemoData {
 
 ## 指定写入的列
 ### excel示例
-![img](/img/2.x/quickstart/write/indexWrite.png)
+![img](/img/quickstart/write/indexWrite.png)
 ### 对象
 ```java
 @Data
@@ -140,7 +140,7 @@ public class IndexData {
 
 ## 复杂头写入
 ### excel示例
-![img](/img/2.x/quickstart/write/complexHeadWrite.png)
+![img](/img/quickstart/write/complexHeadWrite.png)
 ### 对象
 ```java
 @Data
@@ -171,7 +171,7 @@ public class ComplexHeadData {
 
 ## 重复多次写入(写到单个或者多个Sheet)
 ### excel示例
-![img](/img/2.x/quickstart/write/repeatedWrite.png)
+![img](/img/quickstart/write/repeatedWrite.png)
 ### 对象
 参照：[最简单的写的对象](#最简单的写的对象)
 ### 代码
@@ -236,7 +236,7 @@ public class ComplexHeadData {
 
 ## 日期、数字或者自定义格式转换
 ### excel示例
-![img](/img/2.x/quickstart/write/converterWrite.png)
+![img](/img/quickstart/write/converterWrite.png)
 ### 对象
 ```java
 @Data
@@ -278,7 +278,7 @@ public class ConverterData {
 
 ## 图片导出
 ### excel示例
-![img](/img/2.x/quickstart/write/imageWrite.png)
+![img](/img/quickstart/write/imageWrite.png)
 ### 对象
 ```java
 @Data
@@ -340,9 +340,9 @@ public class ImageData {
 
 ## 根据模板写入
 ### 模板excel示例
-![img](/img/2.x/quickstart/read/demo.png)
+![img](/img/quickstart/read/demo.png)
 ### excel示例
-![img](/img/2.x/quickstart/write/templateWrite.png)
+![img](/img/quickstart/write/templateWrite.png)
 ### 对象
 参照：[最简单的写的对象](#最简单的写的对象)
 ### 代码
@@ -365,7 +365,7 @@ public class ImageData {
 
 ## 列宽、行高
 ### excel示例
-![img](/img/2.x/quickstart/write/widthAndHeightWrite.png)
+![img](/img/quickstart/write/widthAndHeightWrite.png)
 ### 对象
 ````java
 @Data
@@ -403,7 +403,7 @@ public class WidthAndHeightData {
 
 ## 自定义样式
 ### excel示例
-![img](/img/2.x/quickstart/write/styleWrite.png)
+![img](/img/quickstart/write/styleWrite.png)
 ### 对象
 参照：[最简单的写的对象](#最简单的写的对象)
 ### 代码
@@ -446,7 +446,7 @@ public class WidthAndHeightData {
 
 ## 合并单元格
 ### excel示例
-![img](/img/2.x/quickstart/write/mergeWrite.png)
+![img](/img/quickstart/write/mergeWrite.png)
 ### 对象
 参照：[最简单的写的对象](#最简单的写的对象)
 ### 代码
@@ -470,7 +470,7 @@ public class WidthAndHeightData {
 
 ## 使用table去写入
 ### excel示例
-![img](/img/2.x/quickstart/write/tableWrite.png)
+![img](/img/quickstart/write/tableWrite.png)
 ### 对象
 参照：[最简单的写的对象](#最简单的写的对象)
 ### 代码
@@ -502,7 +502,7 @@ public class WidthAndHeightData {
 
 ## 动态头，实时生成头写入
 ### excel示例
-![img](/img/2.x/quickstart/write/dynamicHeadWrite.png)
+![img](/img/quickstart/write/dynamicHeadWrite.png)
 ### 对象
 参照：[最简单的写的对象](#最简单的写的对象)
 ### 代码
@@ -544,7 +544,7 @@ public class WidthAndHeightData {
 
 ## 自动列宽(不太精确)
 ### excel示例
-![img](/img/2.x/quickstart/write/longestMatchColumnWidthWrite.png)
+![img](/img/quickstart/write/longestMatchColumnWidthWrite.png)
 ### 对象
 ```java
 @Data
@@ -598,7 +598,7 @@ public class LongestMatchColumnWidthData {
 
 ## 自定义拦截器（上面几点都不符合但是要对单元格进行操作的参照这个）
 ### excel示例
-![img](/img/2.x/quickstart/write/customHandlerWrite.png)
+![img](/img/quickstart/write/customHandlerWrite.png)
 ### 对象
 参照：[最简单的写的对象](#最简单的写的对象)
 ### 定义拦截器
@@ -692,7 +692,7 @@ public class CustomSheetWriteHandler implements SheetWriteHandler {
 
 ## 不创建对象的写
 ### excel示例
-![img](/img/2.x/quickstart/write/simpleWrite.png)
+![img](/img/quickstart/write/simpleWrite.png)
 ### 代码
 ```java
 /**

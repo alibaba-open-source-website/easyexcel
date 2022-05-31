@@ -15,13 +15,11 @@ github地址:[https://github.com/alibaba/easyexcel](https://github.com/alibaba/e
 [https://easyexcel.opensource.alibaba.com/](https://easyexcel.opensource.alibaba.com/)
 
 ### 联系方式
-[QQ群: 662022184](//shang.qq.com/wpa/qunwpa?idkey=53d9d821b0833e3c14670f007488a61e300f00ff4f1b81fd950590d90dd80f80)
-[钉钉群: 21960511](https://qr.dingtalk.com/action/joingroup?code=v1,k1,cchz6k12ci9B08NNqhNRFGXocNVHrZtW0kaOtTKg/Rk=&_dt_no_comment=1&origin=11)
-#### 因为公司不方便用QQ，所以建议加钉钉群
+[如何获取支持](/community/support)
 
 ### 64M内存1分钟内读取75M(46W行25列)的Excel
 当然还有急速模式能更快，但是内存占用会在100M多一点
-![img](/img/2.x/large.png)
+![img](/img/large.png)
 
 ### 快速开始
 #### 读Excel

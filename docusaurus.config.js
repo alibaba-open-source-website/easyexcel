@@ -13,7 +13,7 @@
 const config = {
     title: 'Easy Excel',
     tagline: '快速、简洁、解决大文件内存溢出的java处理Excel工具',
-    url: 'https://your-docusaurus-test-site.com',
+    url: 'https://easyexcel.opensource.alibaba.com/',
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
@@ -33,12 +33,8 @@ const config = {
                     lastVersion: 'current',
                     versions: {
                         "current": {
-                            label: "3.x",
-                            path: "3.x",
-                        },
-                        "2.x": {
                             label: "2.x",
-                            path: "2.x",
+                            path: "current",
                         },
                     }
                 },
@@ -61,22 +57,24 @@ const config = {
 
     plugins: [
         [
-            'content-docs',
-            /** @type {import('@docusaurus/plugin-content-docs').Options} */
-            ({
+            '@docusaurus/plugin-content-docs',
+            {
                 id: 'qa',
                 path: 'qa',
-                routeBasePath: '/qa',
-                sidebarPath: require.resolve('./sidebars.js'),
-            }),
+                routeBasePath: 'qa',
+                sidebarPath: require.resolve('./sidebarsQa.js'),
+            },
+        ],
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'api',
+                path: 'api',
+                routeBasePath: 'api',
+                sidebarPath: require.resolve('./sidebarsApi.js'),
+            },
         ],
     ],
-
-
-    i18n: {
-        defaultLocale: "zh",
-        locales: ["zh", "en"],
-    },
 
     themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -91,7 +89,10 @@ const config = {
                     name: 'keywords',
                     content: 'Excel,Easy Excel,easyexcel 官方,easyexcel,Java,xls,xlsx,csv,省内存,简单,读excel,写excel,解析Excel,poi,oom,OutOfMemoryError'
                 },
-                {name: 'description', content: '快速、简洁、解决大文件内存溢出的java处理Excel工具'},
+                {
+                    name: 'description',
+                    content: '快速、简洁、解决大文件内存溢出的java处理Excel工具'
+                },
             ],
             navbar: {
                 title: 'Easy Excel',
@@ -107,6 +108,14 @@ const config = {
                         label: '文档',
                     },
                     {
+                        label: 'API',
+                        type: 'doc',
+                        docId: 'index',
+                        position: 'right',
+                        docsPluginId: 'api',
+                    },
+
+                    {
                         label: '常见问题',
                         type: 'doc',
                         docId: 'index',
@@ -118,11 +127,6 @@ const config = {
                         type: 'docsVersionDropdown',
                         position: 'right',
                         dropdownActiveClassDisabled: true
-                    },
-
-                    {
-                        type: "localeDropdown",
-                        position: "right",
                     },
 
                     {
@@ -147,16 +151,6 @@ const config = {
             },
         }),
 
-    themes: [
-        [
-            require.resolve("@easyops-cn/docusaurus-search-local"),
-            {
-                // `hashed` is recommended as long-term-cache of index file is possible.
-                hashed: true,
-                language: ["en", "zh"],
-            },
-        ],
-    ],
 };
 
 module.exports = config;

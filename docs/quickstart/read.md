@@ -4,29 +4,43 @@ sidebar_position: 1
 ---
 
 ## 示例代码
-DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/read/ReadTest.java](https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/read/ReadTest.java)
+
+DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/master/easyexcel-test/src/test/java/com/alibaba/easyexcel/test/demo/read/ReadTest.java](https://github.com/alibaba/easyexcel/blob/master/easyexcel-test/src/test/java/com/alibaba/easyexcel/test/demo/read/ReadTest.java)
+
 ## 最简单的读
+
 ### 最简单的读的excel示例
+
 ![img](/img/quickstart/read/demo.png)
+
 ### 最简单的读的对象
+
 ```java
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
 public class DemoData {
     private String string;
     private Date date;
     private Double doubleData;
 }
 ```
+
 ### 最简单的读的监听器
+
 ```java
 // 有个很重要的点 DemoDataListener 不能被spring管理，要每次读取excel都要new,然后里面用到spring可以构造方法传进去
-public class DemoDataListener extends AnalysisEventListener<DemoData> {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DemoDataListener.class);
+@Slf4j
+public class DemoDataListener implements ReadListener<DemoData> {
+
     /**
-     * 每隔5条存储数据库，实际使用中可以3000条，然后清理list ，方便内存回收
+     * 每隔5条存储数据库，实际使用中可以100条，然后清理list ，方便内存回收
      */
-    private static final int BATCH_COUNT = 5;
-    List<DemoData> list = new ArrayList<DemoData>();
+    private static final int BATCH_COUNT = 100;
+    /**
+     * 缓存的数据
+     */
+    private List<DemoData> cachedDataList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);
     /**
      * 假设这个是一个DAO，当然有业务逻辑这个也可以是一个service。当然如果不用存储这个对象没用。
      */
@@ -49,19 +63,18 @@ public class DemoDataListener extends AnalysisEventListener<DemoData> {
     /**
      * 这个每一条数据解析都会来调用
      *
-     * @param data
-     *            one row value. Is is same as {@link AnalysisContext#readRowHolder()}
+     * @param data    one row value. Is is same as {@link AnalysisContext#readRowHolder()}
      * @param context
      */
     @Override
     public void invoke(DemoData data, AnalysisContext context) {
-        LOGGER.info("解析到一条数据:{}", JSON.toJSONString(data));
-        list.add(data);
+        log.info("解析到一条数据:{}", JSON.toJSONString(data));
+        cachedDataList.add(data);
         // 达到BATCH_COUNT了，需要去存储一次数据库，防止数据几万条数据在内存，容易OOM
-        if (list.size() >= BATCH_COUNT) {
+        if (cachedDataList.size() >= BATCH_COUNT) {
             saveData();
             // 存储完成清理 list
-            list.clear();
+            cachedDataList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);
         }
     }
 
@@ -74,64 +87,143 @@ public class DemoDataListener extends AnalysisEventListener<DemoData> {
     public void doAfterAllAnalysed(AnalysisContext context) {
         // 这里也要保存数据，确保最后遗留的数据也存储到数据库
         saveData();
-        LOGGER.info("所有数据解析完成！");
+        log.info("所有数据解析完成！");
     }
 
     /**
      * 加上存储数据库
      */
     private void saveData() {
-        LOGGER.info("{}条数据，开始存储数据库！", list.size());
-        demoDAO.save(list);
-        LOGGER.info("存储数据库成功！");
+        log.info("{}条数据，开始存储数据库！", cachedDataList.size());
+        demoDAO.save(cachedDataList);
+        log.info("存储数据库成功！");
     }
 }
-
 ```
+
 ### 持久层
+
 ```java
 /**
  * 假设这个是你的DAO存储。当然还要这个类让spring管理，当然你不用需要存储，也不需要这个类。
  **/
 public class DemoDAO {
-
     public void save(List<DemoData> list) {
         // 如果是mybatis,尽量别直接调用多次insert,自己写一个mapper里面新增一个方法batchInsert,所有数据一次性插入
     }
 }
 ```
+
 ### 代码
+
 ```java
-    /**
+   /**
      * 最简单的读
-     * <p>1. 创建excel对应的实体对象 参照{@link DemoData}
-     * <p>2. 由于默认一行行的读取excel，所以需要创建excel一行一行的回调监听器，参照{@link DemoDataListener}
-     * <p>3. 直接读即可
+     * <p>
+     * 1. 创建excel对应的实体对象 参照{@link DemoData}
+     * <p>
+     * 2. 由于默认一行行的读取excel，所以需要创建excel一行一行的回调监听器，参照{@link DemoDataListener}
+     * <p>
+     * 3. 直接读即可
      */
     @Test
     public void simpleRead() {
-        // 有个很重要的点 DemoDataListener 不能被spring管理，要每次读取excel都要new,然后里面用到spring可以构造方法传进去
-        // 写法1：
+        // 写法1：JDK8+ ,不用额外写一个DemoDataListener
+        // since: 3.0.0-beta1
         String fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
+        // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
+        // 这里每次会读取3000条数据 然后返回过来 直接调用使用数据就行
+        EasyExcel.read(fileName, DemoData.class, new PageReadListener<DemoData>(dataList -> {
+            for (DemoData demoData : dataList) {
+                log.info("读取到一条数据{}", JSON.toJSONString(demoData));
+            }
+        })).sheet().doRead();
+
+        // 写法2：
+        // 匿名内部类 不用额外写一个DemoDataListener
+        fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
+        // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
+        EasyExcel.read(fileName, DemoData.class, new ReadListener<DemoData>() {
+            /**
+             * 单次缓存的数据量
+             */
+            public static final int BATCH_COUNT = 100;
+            /**
+             *临时存储
+             */
+            private List<DemoData> cachedDataList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);
+
+            @Override
+            public void invoke(DemoData data, AnalysisContext context) {
+                cachedDataList.add(data);
+                if (cachedDataList.size() >= BATCH_COUNT) {
+                    saveData();
+                    // 存储完成清理 list
+                    cachedDataList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);
+                }
+            }
+
+            @Override
+            public void doAfterAllAnalysed(AnalysisContext context) {
+                saveData();
+            }
+
+            /**
+             * 加上存储数据库
+             */
+            private void saveData() {
+                log.info("{}条数据，开始存储数据库！", cachedDataList.size());
+                log.info("存储数据库成功！");
+            }
+        }).sheet().doRead();
+
+        // 有个很重要的点 DemoDataListener 不能被spring管理，要每次读取excel都要new,然后里面用到spring可以构造方法传进去
+        // 写法3：
+        fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
         // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
         EasyExcel.read(fileName, DemoData.class, new DemoDataListener()).sheet().doRead();
 
-        // 写法2：
+        // 写法4： 使用 try-with-resources @since 3.1.0
         fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
-        ExcelReader excelReader = EasyExcel.read(fileName, DemoData.class, new DemoDataListener()).build();
-        ReadSheet readSheet = EasyExcel.readSheet(0).build();
-        excelReader.read(readSheet);
-        // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的
-        excelReader.finish();
+        // 一个文件一个reader
+        try (ExcelReader excelReader = EasyExcel.read(fileName, DemoData.class, new DemoDataListener()).build()) {
+            // 构建一个sheet 这里可以指定名字或者no
+            ReadSheet readSheet = EasyExcel.readSheet(0).build();
+            // 读取一个sheet
+            excelReader.read(readSheet);
+        }
+
+        // 写法5： 不使用 try-with-resources
+        fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
+        // 一个文件一个reader
+        ExcelReader excelReader = null;
+        try {
+            excelReader = EasyExcel.read(fileName, DemoData.class, new DemoDataListener()).build();
+            // 构建一个sheet 这里可以指定名字或者no
+            ReadSheet readSheet = EasyExcel.readSheet(0).build();
+            // 读取一个sheet
+            excelReader.read(readSheet);
+        } finally {
+            if (excelReader != null) {
+                // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的
+                excelReader.close();
+            }
+        }
     }
 ```
 
 ## 指定列的下标或者列名
+
 ### excel示例
+
 参照：[最简单的读的excel示例](#最简单的读的excel示例)
+
 ### 对象
+
 ```java
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
 public class IndexOrNameData {
     /**
      * 强制读取第三个 这里不建议 index 和 name 同时用，要么一个对象只用index，要么一个对象只用name去匹配
@@ -147,9 +239,13 @@ public class IndexOrNameData {
     private Date date;
 }
 ```
+
 ### 监听器
+
 参照：[最简单的读的监听器](#最简单的读的监听器) 只是泛型变了而已
+
 ### 代码
+
 ```java
     /**
      * 指定列的下标或者列名
@@ -167,13 +263,21 @@ public class IndexOrNameData {
 ```
 
 ## 读多个sheet
+
 ### excel示例
+
 参照：[最简单的读的excel示例](#最简单的读的excel示例)
+
 ### 对象
+
 参照：[最简单的读的对象](#最简单的读的对象)
+
 ### 监听器
+
 参照：[最简单的读的监听器](#最简单的读的监听器)
+
 ### 代码
+
 ```java
     /**
      * 读多个或者全部sheet,这里注意一个sheet不能读取多次，多次读取需要重新读取文件
@@ -193,25 +297,51 @@ public class IndexOrNameData {
 
         // 读取部分sheet
         fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
-        ExcelReader excelReader = EasyExcel.read(fileName).build();
-        // 这里为了简单 所以注册了 同样的head 和Listener 自己使用功能必须不同的Listener
-        ReadSheet readSheet1 =
-            EasyExcel.readSheet(0).head(DemoData.class).registerReadListener(new DemoDataListener()).build();
-        ReadSheet readSheet2 =
-            EasyExcel.readSheet(1).head(DemoData.class).registerReadListener(new DemoDataListener()).build();
-        // 这里注意 一定要把sheet1 sheet2 一起传进去，不然有个问题就是03版的excel 会读取多次，浪费性能
-        excelReader.read(readSheet1, readSheet2);
-        // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的
-        excelReader.finish();
+
+        // 写法1： 使用 try-with-resources @since 3.1.0
+        try (ExcelReader excelReader = EasyExcel.read(fileName).build()) {
+            // 这里为了简单 所以注册了 同样的head 和Listener 自己使用功能必须不同的Listener
+            ReadSheet readSheet1 =
+                EasyExcel.readSheet(0).head(DemoData.class).registerReadListener(new DemoDataListener()).build();
+            ReadSheet readSheet2 =
+                EasyExcel.readSheet(1).head(DemoData.class).registerReadListener(new DemoDataListener()).build();
+            // 这里注意 一定要把sheet1 sheet2 一起传进去，不然有个问题就是03版的excel 会读取多次，浪费性能
+            excelReader.read(readSheet1, readSheet2);
+        }
+
+        // 写法2： 不使用 try-with-resources
+        ExcelReader excelReader = null;
+        try {
+            excelReader = EasyExcel.read(fileName).build();
+
+            // 这里为了简单 所以注册了 同样的head 和Listener 自己使用功能必须不同的Listener
+            ReadSheet readSheet1 =
+                EasyExcel.readSheet(0).head(DemoData.class).registerReadListener(new DemoDataListener()).build();
+            ReadSheet readSheet2 =
+                EasyExcel.readSheet(1).head(DemoData.class).registerReadListener(new DemoDataListener()).build();
+            // 这里注意 一定要把sheet1 sheet2 一起传进去，不然有个问题就是03版的excel 会读取多次，浪费性能
+            excelReader.read(readSheet1, readSheet2);
+        } finally {
+            if (excelReader != null) {
+                // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的
+                excelReader.close();
+            }
+        }
     }
 ```
 
 ## 日期、数字或者自定义格式转换
+
 ### excel示例
+
 参照：[最简单的读的excel示例](#最简单的读的excel示例)
+
 ### 对象
+
 ```java
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
 public class ConverterData {
     /**
      * 我自定义 转换器，不管数据库传过来什么 。我给他加上“自定义：”
@@ -230,13 +360,17 @@ public class ConverterData {
     private String doubleData;
 }
 ```
+
 ### 监听器
+
 参照：[最简单的读的监听器](#最简单的读的监听器) 只是泛型变了
+
 ### 自定义转换器
-````java
+
+```java
 public class CustomStringStringConverter implements Converter<String> {
     @Override
-    public Class supportJavaTypeKey() {
+    public Class<?> supportJavaTypeKey() {
         return String.class;
     }
 
@@ -248,40 +382,29 @@ public class CustomStringStringConverter implements Converter<String> {
     /**
      * 这里读的时候会调用
      *
-     * @param cellData
-     *            NotNull
-     * @param contentProperty
-     *            Nullable
-     * @param globalConfiguration
-     *            NotNull
+     * @param context
      * @return
      */
     @Override
-    public String convertToJavaData(CellData cellData, ExcelContentProperty contentProperty,
-        GlobalConfiguration globalConfiguration) {
-        return "自定义：" + cellData.getStringValue();
+    public String convertToJavaData(ReadConverterContext<?> context) {
+        return "自定义：" + context.getReadCellData().getStringValue();
     }
 
     /**
      * 这里是写的时候会调用 不用管
      *
-     * @param value
-     *            NotNull
-     * @param contentProperty
-     *            Nullable
-     * @param globalConfiguration
-     *            NotNull
      * @return
      */
     @Override
-    public CellData convertToExcelData(String value, ExcelContentProperty contentProperty,
-        GlobalConfiguration globalConfiguration) {
-        return new CellData(value);
+    public WriteCellData<?> convertToExcelData(WriteConverterContext<String> context) {
+        return new WriteCellData<>(context.getValue());
     }
 
 }
-````
+```
+
 ### 代码
+
 ```java
     /**
      * 日期、数字或者自定义格式转换
@@ -304,14 +427,22 @@ public class CustomStringStringConverter implements Converter<String> {
     }
 ```
 
-## 行头
+## 多行头
+
 ### excel示例
+
 参照：[最简单的读的excel示例](#最简单的读的excel示例)
+
 ### 对象
+
 参照：[最简单的读的对象](#最简单的读的对象)
+
 ### 监听器
+
 参照：[最简单的读的监听器](#最简单的读的监听器)
+
 ### 代码
+
 ```java
     /**
      * 多行头
@@ -332,11 +463,17 @@ public class CustomStringStringConverter implements Converter<String> {
 ```
 
 ## 同步的返回
+
 ### excel示例
-参照：[最简单的读的excel示例](#最简单的读的excel示例)
+
+参照：[excel示例](#3a393618)
+
 ### 对象
-参照：[最简单的读的对象](#最简单的读的对象)
+
+参照：[对象](#b1449413)
+
 ### 代码
+
 ```java
     /**
      * 同步的返回，不推荐使用，如果数据量大会把数据放到内存里面
@@ -349,7 +486,6 @@ public class CustomStringStringConverter implements Converter<String> {
         for (DemoData data : list) {
             LOGGER.info("读取到数据:{}", JSON.toJSONString(data));
         }
-
         // 这里 也可以不指定class，返回一个list，然后读取第一个sheet 同步读取会自动finish
         List<Map<Integer, String>> listMap = EasyExcel.read(fileName).sheet().doReadSync();
         for (Map<Integer, String> data : listMap) {
@@ -360,13 +496,20 @@ public class CustomStringStringConverter implements Converter<String> {
 ```
 
 ## 读取表头数据
+
 ### excel示例
+
 参照：[最简单的读的excel示例](#最简单的读的excel示例)
+
 ### 对象
+
 参照：[最简单的读的对象](#最简单的读的对象)
+
 ### 监听器
+
 参照：[最简单的读的监听器](#最简单的读的监听器)
 里面多了一个方法,只要重写invokeHeadMap方法即可
+
 ```java
     /**
      * 这里会一行行的返回头
@@ -375,11 +518,16 @@ public class CustomStringStringConverter implements Converter<String> {
      * @param context
      */
     @Override
-    public void invokeHeadMap(Map<Integer, String> headMap, AnalysisContext context) {
-        LOGGER.info("解析到一条头数据:{}", JSON.toJSONString(headMap));
+    public void invokeHead(Map<Integer, ReadCellData<?>> headMap, AnalysisContext context) {
+        log.info("解析到一条头数据:{}", JSON.toJSONString(headMap));
+        // 如果想转成成 Map<Integer,String>
+        // 方案1： 不要implements ReadListener 而是 extends AnalysisEventListener
+        // 方案2： 调用 ConverterUtils.convertToStringMap(headMap, context) 自动会转换
     }
 ```
+
 ### 代码
+
 ```java
     /**
      * 读取表头数据
@@ -399,22 +547,184 @@ public class CustomStringStringConverter implements Converter<String> {
     }
 ```
 
-## 数据转换等异常处理
+## 额外信息（批注、超链接、合并单元格信息读取）
+
+### since
+
+2.0.0-beta1
+
 ### excel示例
-参照：[最简单的读的excel示例](#最简单的读的excel示例)
+
+![img](/img/quickstart/read/extra.png)
+
 ### 对象
+
 ```java
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
+public class DemoExtraData {
+
+    private String row1;
+
+    private String row2;
+}
+```
+
+### 监听器
+
+参照：[最简单的读的监听器](#最简单的读的监听器)
+里面多了一个 `extra` 方法
+
+```java
+@Slf4j
+public class DemoExtraListener implements ReadListener<DemoExtraData> {
+
+    @Override
+    public void invoke(DemoExtraData data, AnalysisContext context) {}
+
+    @Override
+    public void doAfterAllAnalysed(AnalysisContext context) {}
+
+    @Override
+    public void extra(CellExtra extra, AnalysisContext context) {
+        log.info("读取到了一条额外信息:{}", JSON.toJSONString(extra));
+        switch (extra.getType()) {
+            case COMMENT:
+                log.info("额外信息是批注,在rowIndex:{},columnIndex;{},内容是:{}", extra.getRowIndex(), extra.getColumnIndex(),
+                    extra.getText());
+                break;
+            case HYPERLINK:
+                if ("Sheet1!A1".equals(extra.getText())) {
+                    log.info("额外信息是超链接,在rowIndex:{},columnIndex;{},内容是:{}", extra.getRowIndex(),
+                        extra.getColumnIndex(), extra.getText());
+                } else if ("Sheet2!A1".equals(extra.getText())) {
+                    log.info(
+                        "额外信息是超链接,而且覆盖了一个区间,在firstRowIndex:{},firstColumnIndex;{},lastRowIndex:{},lastColumnIndex:{},"
+                            + "内容是:{}",
+                        extra.getFirstRowIndex(), extra.getFirstColumnIndex(), extra.getLastRowIndex(),
+                        extra.getLastColumnIndex(), extra.getText());
+                } else {
+                    Assert.fail("Unknown hyperlink!");
+                }
+                break;
+            case MERGE:
+                log.info(
+                    "额外信息是超链接,而且覆盖了一个区间,在firstRowIndex:{},firstColumnIndex;{},lastRowIndex:{},lastColumnIndex:{}",
+                    extra.getFirstRowIndex(), extra.getFirstColumnIndex(), extra.getLastRowIndex(),
+                    extra.getLastColumnIndex());
+                break;
+            default:
+        }
+    }
+}
+```
+
+### 代码
+
+```java
+    /**
+     * 额外信息（批注、超链接、合并单元格信息读取）
+     * <p>
+     * 由于是流式读取，没法在读取到单元格数据的时候直接读取到额外信息，所以只能最后通知哪些单元格有哪些额外信息
+     *
+     * <p>
+     * 1. 创建excel对应的实体对象 参照{@link DemoExtraData}
+     * <p>
+     * 2. 由于默认异步读取excel，所以需要创建excel一行一行的回调监听器，参照{@link DemoExtraListener}
+     * <p>
+     * 3. 直接读即可
+     *
+     * @since 2.2.0-beat1
+     */
+    @Test
+    public void extraRead() {
+        String fileName = TestFileUtil.getPath() + "demo" + File.separator + "extra.xlsx";
+        // 这里 需要指定读用哪个class去读，然后读取第一个sheet
+        EasyExcel.read(fileName, DemoExtraData.class, new DemoExtraListener())
+            // 需要读取批注 默认不读取
+            .extraRead(CellExtraTypeEnum.COMMENT)
+            // 需要读取超链接 默认不读取
+            .extraRead(CellExtraTypeEnum.HYPERLINK)
+            // 需要读取合并单元格信息 默认不读取
+            .extraRead(CellExtraTypeEnum.MERGE).sheet().doRead();
+    }
+```
+
+## 读取公式和单元格类型
+
+### excel示例
+
+![img](/img/quickstart/read/cellDataRead.png)
+
+### 对象
+
+```java
+@Getter
+@Setter
+@EqualsAndHashCode
+public class CellDataReadDemoData {
+    private CellData<String> string;
+    // 这里注意 虽然是日期 但是 类型 存储的是number 因为excel 存储的就是number
+    private CellData<Date> date;
+    private CellData<Double> doubleData;
+    // 这里并不一定能完美的获取 有些公式是依赖性的 可能会读不到 这个问题后续会修复
+    private CellData<String> formulaValue;
+}
+```
+
+### 监听器
+
+参照：[最简单的读的监听器](#最简单的读的监听器)
+代码
+
+```java
+       /**
+     * 读取公式和单元格类型
+     *
+     * <p>
+     * 1. 创建excel对应的实体对象 参照{@link CellDataReadDemoData}
+     * <p>
+     * 2. 由于默认一行行的读取excel，所以需要创建excel一行一行的回调监听器，参照{@link DemoHeadDataListener}
+     * <p>
+     * 3. 直接读即可
+     *
+     * @since 2.2.0-beat1
+     */
+    @Test
+    public void cellDataRead() {
+        String fileName = TestFileUtil.getPath() + "demo" + File.separator + "cellDataDemo.xlsx";
+        // 这里 需要指定读用哪个class去读，然后读取第一个sheet
+        EasyExcel.read(fileName, CellDataReadDemoData.class, new CellDataDemoHeadDataListener()).sheet().doRead();
+    }
+```
+
+## 数据转换等异常处理
+
+### excel示例
+
+参照：[最简单的读的excel示例](#最简单的读的excel示例)
+
+### 对象
+
+```java
+@Getter
+@Setter
+@EqualsAndHashCode
 public class ExceptionDemoData {
     /**
      * 用日期去接字符串 肯定报错
      */
     private Date date;
 }
+
 ```
+
 ### 监听器
+
 参照：[最简单的读的监听器](#最简单的读的监听器)
 里面多了一个方法,只要重写onException方法即可
+
 ```java
     /**
      * 在转换异常 获取其他异常下会调用本接口。抛出异常则停止读取。如果这里不抛出异常则 继续读取下一行。
@@ -425,17 +735,19 @@ public class ExceptionDemoData {
      */
     @Override
     public void onException(Exception exception, AnalysisContext context) {
-        LOGGER.error("解析失败，但是继续解析下一行:{}", exception.getMessage());
+        log.error("解析失败，但是继续解析下一行:{}", exception.getMessage());
         // 如果是某一个单元格的转换异常 能获取到具体行号
         // 如果要获取头的信息 配合invokeHeadMap使用
         if (exception instanceof ExcelDataConvertException) {
             ExcelDataConvertException excelDataConvertException = (ExcelDataConvertException)exception;
-            LOGGER.error("第{}行，第{}列解析异常", excelDataConvertException.getRowIndex(),
-                excelDataConvertException.getColumnIndex());
+            log.error("第{}行，第{}列解析异常，数据为:{}", excelDataConvertException.getRowIndex(),
+                excelDataConvertException.getColumnIndex(), excelDataConvertException.getCellData());
         }
     }
 ```
+
 ### 代码
+
 ```java
     /**
      * 数据转换等异常处理
@@ -456,71 +768,83 @@ public class ExceptionDemoData {
 ```
 
 ## 不创建对象的读
+
 ### excel示例
+
 参照：[最简单的读的excel示例](#最简单的读的excel示例)
+
 ### 监听器
+
 ```java
-/**
- * 直接用map接收数据
- *
- * @author Jiaju Zhuang
- */
-public class NoModleDataListener extends AnalysisEventListener<Map<Integer, String>> {
-    private static final Logger LOGGER = LoggerFactory.getLogger(NoModleDataListener.class);
+@Slf4j
+public class NoModelDataListener extends AnalysisEventListener<Map<Integer, String>> {
     /**
-     * 每隔5条存储数据库，实际使用中可以3000条，然后清理list ，方便内存回收
+     * 每隔5条存储数据库，实际使用中可以100条，然后清理list ，方便内存回收
      */
     private static final int BATCH_COUNT = 5;
-    List<Map<Integer, String>> list = new ArrayList<Map<Integer, String>>();
+    private List<Map<Integer, String>> cachedDataList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);
 
     @Override
     public void invoke(Map<Integer, String> data, AnalysisContext context) {
-        LOGGER.info("解析到一条数据:{}", JSON.toJSONString(data));
-        list.add(data);
-        if (list.size() >= BATCH_COUNT) {
+        log.info("解析到一条数据:{}", JSON.toJSONString(data));
+        cachedDataList.add(data);
+        if (cachedDataList.size() >= BATCH_COUNT) {
             saveData();
-            list.clear();
+            cachedDataList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);
         }
     }
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
         saveData();
-        LOGGER.info("所有数据解析完成！");
+        log.info("所有数据解析完成！");
     }
 
     /**
      * 加上存储数据库
      */
     private void saveData() {
-        LOGGER.info("{}条数据，开始存储数据库！", list.size());
-        LOGGER.info("存储数据库成功！");
+        log.info("{}条数据，开始存储数据库！", cachedDataList.size());
+        log.info("存储数据库成功！");
     }
 }
+
 ```
+
 ### 代码
+
 ```java
     /**
-     * 不创建对象的读，不是特别推荐使用，都用String接收对日期的支持不是很好
+     * 不创建对象的读
      */
     @Test
-    public void noModleRead() {
+    public void noModelRead() {
         String fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
         // 这里 只要，然后读取第一个sheet 同步读取会自动finish
-        EasyExcel.read(fileName, new NoModleDataListener()).sheet().doRead();
+        EasyExcel.read(fileName, new NoModelDataListener()).sheet().doRead();
     }
 ```
 
 ## web中的读
+
 ### 示例代码
-DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/web/WebTest.java](https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/web/WebTest.java)
+
+DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/master/easyexcel-test/src/test/java/com/alibaba/easyexcel/test/demo/web/WebTest.java](https://github.com/alibaba/easyexcel/blob/master/easyexcel-test/src/test/java/com/alibaba/easyexcel/test/demo/web/WebTest.java)
+
 ### excel示例
+
 参照：[最简单的读的excel示例](#最简单的读的excel示例)
+
 ### 对象
+
 参照：[最简单的读的对象](#最简单的读的对象) 只是名字变了
+
 ### 监听器
+
 参照：[最简单的读的监听器](#最简单的读的监听器) 只是泛型变了
+
 ### 代码
+
 ```java
     /**
      * 文件上传
@@ -538,4 +862,5 @@ DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/j
         return "success";
     }
 ```
+
 

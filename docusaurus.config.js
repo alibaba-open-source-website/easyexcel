@@ -33,15 +33,14 @@ const config = {
                     lastVersion: 'current',
                     versions: {
                         "current": {
-                            label: "2.x",
+                            label: "3.0.x",
                             path: "current",
                         },
+                        "2.x": {
+                            label: "2.x",
+                            path: "2.x",
+                        },
                     }
-                },
-                blog: {
-                    showReadingTime: true,
-                    // 这里写自己的文档编辑地址
-                    editUrl: 'https://github.com/alibaba-open-source-website/easyexcel',
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
@@ -52,27 +51,6 @@ const config = {
                     anonymizeIP: true,
                 },
             }),
-        ],
-    ],
-
-    plugins: [
-        [
-            '@docusaurus/plugin-content-docs',
-            {
-                id: 'qa',
-                path: 'qa',
-                routeBasePath: 'qa',
-                sidebarPath: require.resolve('./sidebarsQa.js'),
-            },
-        ],
-        [
-            '@docusaurus/plugin-content-docs',
-            {
-                id: 'api',
-                path: 'api',
-                routeBasePath: 'api',
-                sidebarPath: require.resolve('./sidebarsApi.js'),
-            },
         ],
     ],
 
@@ -108,19 +86,16 @@ const config = {
                         label: '文档',
                     },
                     {
+                        type: 'doc',
+                        docId: 'api/index',
+                        position: 'right',
                         label: 'API',
-                        type: 'doc',
-                        docId: 'index',
-                        position: 'right',
-                        docsPluginId: 'api',
                     },
-
                     {
-                        label: '常见问题',
                         type: 'doc',
-                        docId: 'index',
+                        docId: 'qa/index',
                         position: 'right',
-                        docsPluginId: 'qa',
+                        label: '常见问题',
                     },
 
                     {

@@ -39,6 +39,6 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           repository: https://github.com/alibaba-easyexcel/alibaba-easyexcel.github.io
-          github_token: ${{ secrets.PUSH_DOC_TOKEN }}
+          github_token: xxxx
           branch: ${{ github.ref }}
           force: true

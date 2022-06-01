@@ -29,7 +29,7 @@ const config = {
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
                     // 这里写自己的文档编辑地址
-                    editUrl: 'https://github.com/alibaba-open-source-website/easyexcel',
+                    editUrl: 'https://github.com/alibaba-open-source-website/easyexcel/tree/main/',
                     lastVersion: 'current',
                     versions: {
                         "current": {

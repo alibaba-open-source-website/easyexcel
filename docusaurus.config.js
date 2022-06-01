@@ -104,7 +104,6 @@ const config = {
             announcementBar: {
                 id: 'announcementBar-2',
                 content: '⭐ 开源不易，如果觉得本项目对您的工作还是有帮助的话， 请帮忙在<a target="_blank" rel="noopener noreferrer" href="https://github.com/alibaba/easyexce">GitHub</a> 点个⭐️',
-                isCloseable: false,
             },
             navbar: {
                 title: 'Easy Excel',

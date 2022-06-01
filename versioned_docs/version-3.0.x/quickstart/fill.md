@@ -117,10 +117,17 @@ public class FillData {
 
         // 方案3 分多次 填充 会使用文件缓存（省内存）
         fileName = TestFileUtil.getPath() + "listFill" + System.currentTimeMillis() + ".xlsx";
-        try (ExcelWriter excelWriter = EasyExcel.write(fileName).withTemplate(templateFileName).build()) {
+        ExcelWriter excelWriter = null;
+        try {
+            excelWriter = EasyExcel.write(fileName).withTemplate(templateFileName).build();
             WriteSheet writeSheet = EasyExcel.writerSheet().build();
             excelWriter.fill(data(), writeSheet);
             excelWriter.fill(data(), writeSheet);
+        } finally {
+            // 千万别忘记关闭流
+            if (excelWriter != null) {
+                excelWriter.finish();
+            }
         }
     }
 ```
@@ -159,8 +166,9 @@ public class FillData {
             TestFileUtil.getPath() + "demo" + File.separator + "fill" + File.separator + "complex.xlsx";
 
         String fileName = TestFileUtil.getPath() + "complexFill" + System.currentTimeMillis() + ".xlsx";
-        // 方案1
-        try (ExcelWriter excelWriter = EasyExcel.write(fileName).withTemplate(templateFileName).build()) {
+        ExcelWriter excelWriter = null;
+        try {
+            excelWriter = EasyExcel.write(fileName).withTemplate(templateFileName).build();
             WriteSheet writeSheet = EasyExcel.writerSheet().build();
             // 这里注意 入参用了forceNewRow 代表在写入list的时候不管list下面有没有空行 都会创建一行，然后下面的数据往后移动。默认 是false，会直接使用下一行，如果没有则创建。
             // forceNewRow 如果设置了true,有个缺点 就是他会把所有的数据都放到内存了，所以慎用
@@ -173,6 +181,11 @@ public class FillData {
             map.put("date", "2019年10月9日13:28:28");
             map.put("total", 1000);
             excelWriter.fill(map, writeSheet);
+        } finally {
+            // 千万别忘记关闭流
+            if (excelWriter != null) {
+                excelWriter.finish();
+            }
         }
     }
 ```
@@ -214,9 +227,9 @@ public class FillData {
             TestFileUtil.getPath() + "demo" + File.separator + "fill" + File.separator + "complexFillWithTable.xlsx";
 
         String fileName = TestFileUtil.getPath() + "complexFillWithTable" + System.currentTimeMillis() + ".xlsx";
-
-        // 方案1
-        try (ExcelWriter excelWriter = EasyExcel.write(fileName).withTemplate(templateFileName).build()) {
+        ExcelWriter excelWriter = null;
+        try {
+            excelWriter = EasyExcel.write(fileName).withTemplate(templateFileName).build();
             WriteSheet writeSheet = EasyExcel.writerSheet().build();
             // 直接写入数据
             excelWriter.fill(data(), writeSheet);
@@ -239,8 +252,14 @@ public class FillData {
             totalList.add("统计:1000");
             // 这里是write 别和fill 搞错了
             excelWriter.write(totalListList, writeSheet);
+
             // 总体上写法比较复杂 但是也没有想到好的版本 异步的去写入excel 不支持行的删除和移动，也不支持备注这种的写入，所以也排除了可以
             // 新建一个 然后一点点复制过来的方案，最后导致list需要新增行的时候，后面的列的数据没法后移，后续会继续想想解决方案
+        } finally {
+            // 千万别忘记关闭流
+            if (excelWriter != null) {
+                excelWriter.finish();
+            }
         }
     }
 ```
@@ -279,16 +298,22 @@ public class FillData {
             TestFileUtil.getPath() + "demo" + File.separator + "fill" + File.separator + "horizontal.xlsx";
 
         String fileName = TestFileUtil.getPath() + "horizontalFill" + System.currentTimeMillis() + ".xlsx";
-        // 方案1
-        try (ExcelWriter excelWriter = EasyExcel.write(fileName).withTemplate(templateFileName).build()) {
+        ExcelWriter excelWriter = null;
+        try {
+            excelWriter = EasyExcel.write(fileName).withTemplate(templateFileName).build();
             WriteSheet writeSheet = EasyExcel.writerSheet().build();
             FillConfig fillConfig = FillConfig.builder().direction(WriteDirectionEnum.HORIZONTAL).build();
             excelWriter.fill(data(), fillConfig, writeSheet);
             excelWriter.fill(data(), fillConfig, writeSheet);
 
-            Map<String, Object> map = new HashMap<>();
+            Map<String, Object> map = new HashMap<String, Object>();
             map.put("date", "2019年10月9日13:28:28");
             excelWriter.fill(map, writeSheet);
+        } finally {
+            // 千万别忘记关闭流
+            if (excelWriter != null) {
+                excelWriter.finish();
+            }
         }
     }
 ```
@@ -327,9 +352,9 @@ public class FillData {
             TestFileUtil.getPath() + "demo" + File.separator + "fill" + File.separator + "composite.xlsx";
 
         String fileName = TestFileUtil.getPath() + "compositeFill" + System.currentTimeMillis() + ".xlsx";
-
-        // 方案1
-        try (ExcelWriter excelWriter = EasyExcel.write(fileName).withTemplate(templateFileName).build()) {
+        ExcelWriter excelWriter = null;
+        try {
+            excelWriter = EasyExcel.write(fileName).withTemplate(templateFileName).build();
             WriteSheet writeSheet = EasyExcel.writerSheet().build();
             FillConfig fillConfig = FillConfig.builder().direction(WriteDirectionEnum.HORIZONTAL).build();
             // 如果有多个list 模板上必须有{前缀.} 这里的前缀就是 data1，然后多个list必须用 FillWrapper包裹
@@ -345,6 +370,11 @@ public class FillData {
             map.put("date", new Date());
 
             excelWriter.fill(map, writeSheet);
+        } finally {
+            // 千万别忘记关闭流
+            if (excelWriter != null) {
+                excelWriter.finish();
+            }
         }
     }
 ```

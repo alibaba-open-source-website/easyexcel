@@ -33,8 +33,12 @@ const config = {
                     lastVersion: 'current',
                     versions: {
                         "current": {
-                            label: "3.0.x",
+                            label: "3.1.x",
                             path: "current",
+                        },
+                        "3.0.x": {
+                            label: "3.0.x",
+                            path: "3.0.x",
                         },
                         "2.x": {
                             label: "2.x",
@@ -96,6 +100,12 @@ const config = {
                     content: '快速、简洁、解决大文件内存溢出的java处理Excel工具'
                 },
             ],
+            // 最上面的广告位
+            announcementBar: {
+                id: 'announcementBar-2',
+                content: '⭐ 开源不易，如果觉得本项目对您的工作还是有帮助的话， 请帮忙在<a target="_blank" rel="noopener noreferrer" href="https://github.com/alibaba/easyexce">GitHub</a> 点个⭐️',
+                isCloseable: false,
+            },
             navbar: {
                 title: 'Easy Excel',
                 logo: {
@@ -157,6 +167,17 @@ const config = {
                 copyright: `Copyright © ${new Date().getFullYear()} Alibaba, Inc. Built with Docusaurus.`,
             },
         }),
+
+    themes: [
+        [
+            require.resolve("@easyops-cn/docusaurus-search-local"),
+            {
+                // `hashed` is recommended as long-term-cache of index file is possible.
+                hashed: true,
+                language: ["en", "zh"],
+            },
+        ],
+    ],
 
 };
 

@@ -132,7 +132,7 @@ public class DemoDAO {
         // since: 3.0.0-beta1
         String fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
         // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
-        // 这里每次会读取100条数据 然后返回过来 直接调用使用数据就行
+        // 这里每次会读取3000条数据 然后返回过来 直接调用使用数据就行
         EasyExcel.read(fileName, DemoData.class, new PageReadListener<DemoData>(dataList -> {
             for (DemoData demoData : dataList) {
                 log.info("读取到一条数据{}", JSON.toJSONString(demoData));
@@ -183,14 +183,21 @@ public class DemoDAO {
         // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
         EasyExcel.read(fileName, DemoData.class, new DemoDataListener()).sheet().doRead();
 
-        // 写法4
+        // 写法4：
         fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
         // 一个文件一个reader
-        try (ExcelReader excelReader = EasyExcel.read(fileName, DemoData.class, new DemoDataListener()).build()) {
+        ExcelReader excelReader = null;
+        try {
+            excelReader = EasyExcel.read(fileName, DemoData.class, new DemoDataListener()).build();
             // 构建一个sheet 这里可以指定名字或者no
             ReadSheet readSheet = EasyExcel.readSheet(0).build();
             // 读取一个sheet
             excelReader.read(readSheet);
+        } finally {
+            if (excelReader != null) {
+                // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的
+                excelReader.finish();
+            }
         }
     }
 ```
@@ -280,9 +287,10 @@ public class IndexOrNameData {
 
         // 读取部分sheet
         fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
+        ExcelReader excelReader = null;
+        try {
+            excelReader = EasyExcel.read(fileName).build();
 
-        // 写法1
-        try (ExcelReader excelReader = EasyExcel.read(fileName).build()) {
             // 这里为了简单 所以注册了 同样的head 和Listener 自己使用功能必须不同的Listener
             ReadSheet readSheet1 =
                 EasyExcel.readSheet(0).head(DemoData.class).registerReadListener(new DemoDataListener()).build();
@@ -290,6 +298,11 @@ public class IndexOrNameData {
                 EasyExcel.readSheet(1).head(DemoData.class).registerReadListener(new DemoDataListener()).build();
             // 这里注意 一定要把sheet1 sheet2 一起传进去，不然有个问题就是03版的excel 会读取多次，浪费性能
             excelReader.read(readSheet1, readSheet2);
+        } finally {
+            if (excelReader != null) {
+                // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的
+                excelReader.finish();
+            }
         }
     }
 ```

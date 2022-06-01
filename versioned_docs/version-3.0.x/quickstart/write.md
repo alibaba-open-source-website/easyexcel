@@ -62,8 +62,6 @@ public class DemoData {
      */
     @Test
     public void simpleWrite() {
-        // 注意 simpleWrite在数据量不大的情况下可以使用（5000以内，具体也要看实际情况），数据量大参照 重复多次写入
-
         // 写法1 JDK8+
         // since: 3.0.0-beta1
         String fileName = TestFileUtil.getPath() + "simpleWrite" + System.currentTimeMillis() + ".xlsx";
@@ -85,9 +83,16 @@ public class DemoData {
         // 写法3
         fileName = TestFileUtil.getPath() + "simpleWrite" + System.currentTimeMillis() + ".xlsx";
         // 这里 需要指定写用哪个class去写
-        try (ExcelWriter excelWriter = EasyExcel.write(fileName, DemoData.class).build()) {
+        ExcelWriter excelWriter = null;
+        try {
+            excelWriter = EasyExcel.write(fileName, DemoData.class).build();
             WriteSheet writeSheet = EasyExcel.writerSheet("模板").build();
             excelWriter.write(data(), writeSheet);
+        } finally {
+            // 千万别忘记finish 会帮忙关闭流
+            if (excelWriter != null) {
+                excelWriter.finish();
+            }
         }
     }
 ```
@@ -243,10 +248,12 @@ public class ComplexHeadData {
      */
     @Test
     public void repeatedWrite() {
-        // 方法1: 如果写到同一个sheet
+        // 方法1 如果写到同一个sheet
         String fileName = TestFileUtil.getPath() + "repeatedWrite" + System.currentTimeMillis() + ".xlsx";
-        // 这里 需要指定写用哪个class去写
-        try (ExcelWriter excelWriter = EasyExcel.write(fileName, DemoData.class).build()) {
+        ExcelWriter excelWriter = null;
+        try {
+            // 这里 需要指定写用哪个class去写
+            excelWriter = EasyExcel.write(fileName, DemoData.class).build();
             // 这里注意 如果同一个sheet只要创建一次
             WriteSheet writeSheet = EasyExcel.writerSheet("模板").build();
             // 去调用写入,这里我调用了五次，实际使用时根据数据库分页的总的页数来
@@ -255,12 +262,18 @@ public class ComplexHeadData {
                 List<DemoData> data = data();
                 excelWriter.write(data, writeSheet);
             }
+        } finally {
+            // 千万别忘记finish 会帮忙关闭流
+            if (excelWriter != null) {
+                excelWriter.finish();
+            }
         }
 
-        // 方法2: 如果写到不同的sheet 同一个对象
+        // 方法2 如果写到不同的sheet 同一个对象
         fileName = TestFileUtil.getPath() + "repeatedWrite" + System.currentTimeMillis() + ".xlsx";
-        // 这里 指定文件
-        try (ExcelWriter excelWriter = EasyExcel.write(fileName, DemoData.class).build()) {
+        try {
+            // 这里 指定文件
+            excelWriter = EasyExcel.write(fileName, DemoData.class).build();
             // 去调用写入,这里我调用了五次，实际使用时根据数据库分页的总的页数来。这里最终会写到5个sheet里面
             for (int i = 0; i < 5; i++) {
                 // 每次都要创建writeSheet 这里注意必须指定sheetNo 而且sheetName必须不一样
@@ -269,12 +282,18 @@ public class ComplexHeadData {
                 List<DemoData> data = data();
                 excelWriter.write(data, writeSheet);
             }
+        } finally {
+            // 千万别忘记finish 会帮忙关闭流
+            if (excelWriter != null) {
+                excelWriter.finish();
+            }
         }
 
         // 方法3 如果写到不同的sheet 不同的对象
         fileName = TestFileUtil.getPath() + "repeatedWrite" + System.currentTimeMillis() + ".xlsx";
-        // 这里 指定文件
-        try (ExcelWriter excelWriter = EasyExcel.write(fileName).build()) {
+        try {
+            // 这里 指定文件
+            excelWriter = EasyExcel.write(fileName).build();
             // 去调用写入,这里我调用了五次，实际使用时根据数据库分页的总的页数来。这里最终会写到5个sheet里面
             for (int i = 0; i < 5; i++) {
                 // 每次都要创建writeSheet 这里注意必须指定sheetNo 而且sheetName必须不一样。这里注意DemoData.class 可以每次都变，我这里为了方便 所以用的同一个class
@@ -284,8 +303,12 @@ public class ComplexHeadData {
                 List<DemoData> data = data();
                 excelWriter.write(data, writeSheet);
             }
+        } finally {
+            // 千万别忘记finish 会帮忙关闭流
+            if (excelWriter != null) {
+                excelWriter.finish();
+            }
         }
-
     }
 ```
 
@@ -962,9 +985,11 @@ public class DemoMergeData {
     @Test
     public void tableWrite() {
         String fileName = TestFileUtil.getPath() + "tableWrite" + System.currentTimeMillis() + ".xlsx";
-        // 方法1 这里直接写多个table的案例了，如果只有一个 也可以直一行代码搞定，参照其他案
+        // 这里直接写多个table的案例了，如果只有一个 也可以直一行代码搞定，参照其他案例
         // 这里 需要指定写用哪个class去写
-        try (ExcelWriter excelWriter = EasyExcel.write(fileName, DemoData.class).build()) {
+        ExcelWriter excelWriter = null;
+        try {
+            excelWriter = EasyExcel.write(fileName, DemoData.class).build();
             // 把sheet设置为不需要头 不然会输出sheet的头 这样看起来第一个table 就有2个头了
             WriteSheet writeSheet = EasyExcel.writerSheet("模板").needHead(Boolean.FALSE).build();
             // 这里必须指定需要头，table 会继承sheet的配置，sheet配置了不需要，table 默认也是不需要
@@ -974,6 +999,11 @@ public class DemoMergeData {
             excelWriter.write(data(), writeSheet, writeTable0);
             // 第二次写如也会创建头，然后在第一次的后面写入数据
             excelWriter.write(data(), writeSheet, writeTable1);
+        } finally {
+            // 千万别忘记finish 会帮忙关闭流
+            if (excelWriter != null) {
+                excelWriter.finish();
+            }
         }
     }
 ```

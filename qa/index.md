@@ -1,56 +1,177 @@
 ---
-title: 常见问题 
+title: 常见问题-必读
 sidebar_position: 1
 ---
-## 读取文件务必使用2.0.5+
-2.0.0-beta1到2.0.2有小概率会丢失数字。
-## beta版本使用注意
-用beta版本的同学注意，建议一个月以后看看有没有正式版(一般一个月内肯定会升级正式版)，有的话改成正式版，因为beta版，容易如有bug,然后也别跳级升级比如你用的是2.1.0-beat1,建议一个月后升级到2.1.x，第一第二位不变，第三位用最新的就可以。
-## 不支持功能
+
+## 基础功能
+
+### 不支持功能
+
 * 单个文件的并发写入、读取
 * 读取图片
 * 宏
-* csv读取（这个后续可能会考虑）
-## 常见问题
-### 必读
-不管想要读还是写，对应的最简单的demo，必须看下
-### 关于@Data
-读写的对象都用到了[Lombok](https://www.projectlombok.org/),他会自动生成`get`,`set` ，如果不需要的话，自己创建对象并生成`get`,`set` 。
-### 填充和写怎么选择？
+
+### pom导入
+
+复制以下代码，并替换成最新版本，或者直接打开：[![Maven central](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel)
+，右边可以直接复制
+
+```xml
+
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>easyexcel</artifactId>
+    <version>最新版本</version>
+</dependency>
+```
+
+### 查看最新版本
+
+图片的绿色小字就是最新版本：
+[![Maven central](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel)
+
+### 写excel的情况下填充和写怎么选择？
+
 填充其实也不会占用大量内存，用的也是文件缓存，最后统一书写，如果导出的内容各种格式复杂，建议直接用模板然后填充（填充的数据会自动有格式）。如果格式相对简单，建议直接用写，相对来说，直接导出性能还是高一丢丢。
-### 部分字段读取或者写入为空？
-读写反射对象用到了`Cglib`,所以成员变量必须符合驼峰规范，而且使用`@Data`不能使用`@Accessors(chain = true)`。后续会考虑支持非驼峰。
-### 出现 `NoSuchMethodException`， `ClassNotFoundException`, `NoClassDefFoundError`
-极大概率是jar冲突，建议`clean`项目，或者统一`poi` 的版本，理论上来说`easyexcel`兼容poi的`3.17`,`4.0.1`,`4.1.0`所有较新版本
-### 在读的时候`Listener`里面需要使用spring的`@Autowired`
-给`Listener`创建成员变量，然后在构造方法里面传进去。必须不让spring管理`Listener`，每次读取都要`new`一个。
-### 用`String`去接收数字，出现小数点等情况
-这个是BUG，但是很难修复，后续版本会修复这个问题。目前请使用`@NumberFormat`注解，里面的参数就是调用了java自带的`NumberFormat.format`方法，不知道怎么入参的可以自己网上查询。
-### 自定义拦截器创建`CellStyle`需要注意
-千万别每次`afterCellDispose`都创建`CellStyle`，第一次进来创建，后面直接用这个就行。`CellStyle`最多创建65536个，多了会崩.
-## 10M+文件读取说明(如果感觉目前效率还行后面的都不需要看)
-03版没有办法处理，相对内存占用大很多。excel 07版本有个共享字符串[共享字符串](https://docs.microsoft.com/zh-cn/office/open-xml/working-with-the-shared-string-table)的概念，这个会非常占用内存，如果全部读取到内存的话，大概是excel文件的大小的3-10倍，所以easyexcel用存储文件的，然后再反序列化去读取的策略来节约内存。当然需要通过文件反序列化以后，效率会降低，大概降低30-50%（不一定，也看命中率，可能会超过100%）
-#### 如果对读取效率感觉还能接受，就用默认的，永久占用（单个excel读取整个过程）一般不会超过50M(大概率就30M)，剩下临时的GC会很快回收
-#### 默认大文件处理
-默认大文件处理会自动判断，共享字符串5M以下会使用内存存储，大概占用15-50M的内存,超过5M则使用文件存储，然后文件存储也要设置多内存M用来存放临时的共享字符串，默认20M。除了共享字符串占用内存外，其他占用较少，所以可以预估10M，所以默认大概30M就能读取一个超级大的文件。
-### 根据实际需求配置内存
-想自定义设置，首先要确定你大概愿意花多少内存来读取一个超级大的excel,比如希望读取excel最多占用100M内存（是读取过程中永久占用，新生代马上回收的不算），那就设置使用文件来存储共享字符串的大小判断为20M(小于20M存内存，大于存临时文件)，然后设置文件存储时临时共享字符串占用内存大小90M差不多
-#### 如果最大文件条数也就十几二十万，然后excel也就是十几二十M，而且不会有很高的并发，并且内存也较大
-```java
- // 强制使用内存存储，这样大概一个20M的excel使用150M（很多临时对象，所以100M会一直GC）的内存
-// 这样效率会比上面的复杂的策略高很
-   // 这里再说明下 就是加了个readCache(new MapCache()) 参数而已，其他的参照其他demo写 这里没有写全 
-  EasyExcel.read().readCache(new MapCache());
+
+### 关于`@Getter`、`@Setter`、`@EqualsAndHashCode`
+
+读写的对象都用到了[Lombok](https://www.projectlombok.org/),他会自动生成`get`,`set` ，如果不需要的话，自己创建对象并生成`get`,`set` 。
+
+### 只要部分字段去匹配excel(excel写入内容匹配不上等)
+
+`easyexcel`默认是全部实体字段都会参与读写，不管你是否加了`@ExcelProperty`注解
+
+* 如果您的版本低于2.1.6,建升级到以上版本
+* 升级了还有，在类的最上面加入`@ExcelIgnoreUnannotated`注解，加入这个注解后只有加了`@ExcelProperty`才会参与读写。
+
+## 兼容性问题
+
+### 读取文件务必使用2.0.5+
+
+2.0.0-beta1到2.0.2有小概率会丢失数字。
+
+### beta版本使用注意
+
+用beta版本的同学注意，建议一个月以后看看有没有正式版(一般一个月内肯定会升级正式版)
+，有的话改成正式版，因为beta版，容易如有bug,然后也别跳级升级比如你用的是2.1.0-beat1,建议一个月后升级到2.1.x，第一第二位不变，第三位用最新的就可以。
+
+### 关于版本选择
+
+:::tip
+如果项目中没有使用过poi,且jdk版本在8-17之间，直接使用最新版本，别犹豫。
+:::
+如果项目中已经使用过poi或者jdk版本小于8的，请参看下面表格做出选择。
+
+| 版本                 | poi依赖版本 (支持范围)        | jdk版本支持范围    | 备注                                          |
+|--------------------|-----------------------|--------------|---------------------------------------------|
+| 3.1.0+             | 4.1.2 (4.1.2 - 5.2.2) | jkd8 - jdk17 | 推荐使用，会更新的版本                                 |
+| 3.0.0-beta1 - 3.0.5 | 4.1.2 (4.1.2 - 5.2.2) | jkd8 - jdk11 | 不推荐项目新引入此版本，除非超级严重bug,否则不再更新                |
+| 2.0.0-beta1-2.2.11 | 3.17 (3.17 - 4.1.2)   | jdk6 - jdk11 | 不推荐项目新引入此版本，除非是jdk6否则不推荐使用，除非超级严重bug,否则不再更新 |
+| 1+版本               | 3.17 (3.17 - 4.1.2)   | jdk6 - jdk11 | 不推荐项目新引入此版本，超级严重bug,也不再更新                   |
+
+:::tip
+3+版本的的easyexcel，使用poi 5+版本时，需要自己引入poi 5+版本的包，且手动排除：poi-ooxml-schemas，例如：
+
+```xml
+
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>easyexcel</artifactId>
+    <version>3.1.0</version>
+    <exclusions>
+        <exclusion>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <groupId>org.apache.poi</groupId>
+        </exclusion>
+    </exclusions>
+</dependency>
 ```
-#### 对并发要求较高，而且都是经常有超级大文件
+
+:::
+
+### 出现 `NoSuchMethodException`， `ClassNotFoundException`, `NoClassDefFoundError` 等兼容性问题
+
+极大概率是jar冲突，可能是以下原因。
+
+* 直接`clean`项目后查看是否可行
+* `poi`版本冲突（项目中已经含有poi的其他版本了），参照:[关于版本选择](#关于版本选择)来指定版本。
+* `ehcache`
+  版本冲突，打开[https://mvnrepository.com/artifact/com.alibaba/easyexcel](https://mvnrepository.com/artifact/com.alibaba/easyexcel)
+  ，打开对应的版本，看下所需要的`ehcache`版本
+
+### 关于版本升级
+
+* 不建议跨大版本升级 尤其跨2个大版本
+* 大版本升级后建议相关内容重新测试下
+* 2+ 升级到 3+ ，下面3个地方不兼容:
+* 使用了自定义拦截器去修改样式的会出问题（不会编译报错）
+
 ```java
- // 第一个参数的意思是 多少M共享字符串以后 采用文件存储 单位MB 默认5M
-// 第二个参数 文件存储时，内存存放多少M缓存数据 默认20M
-// 比如 你希望用100M内存(这里说的是解析过程中的永久占用,临时对象不算)来解析excel，前面算过了 大概是 20M+90M 所以设置参数为:20 和 90 
-   // 这里再说明下 就是加了个readCacheSelector(new SimpleReadCacheSelector(5, 20))参数而已，其他的参照其他demo写 这里没有写全 
-EasyExcel.read().readCacheSelector(new SimpleReadCacheSelector(5, 20));
+// 以前的写法
+@Override
+protected void setHeadCellStyle(Cell cell, Head head, Integer relativeRowIndex) {
+            cell.setCellStyle(style);
+ }
+
+// 现在的写法1
+// 这个写完也需要测试下 还是老代码 不管使用了什么拦截器 都可以这么写 
+// 这个会导致格式化数据失效
+    protected void setHeadCellStyle(CellWriteHandlerContext context) {
+            cell.setCellStyle(style);
+
+         // 这里要把 WriteCellData的样式清空， 不然后面还有一个拦截器 FillStyleCellWriteHandler 默认会将 WriteCellStyle 设置到
+         // cell里面去 会导致自己设置的不一样
+         context.getFirstCellData().setWriteCellStyle(null);
+    }
+
+
+// 现在的写法2 推荐
+// 这个方案靠谱 以前用 poi的CellStyle  现在用 WriteCellStyle 入参基本都一致
+    protected void setHeadCellStyle(CellWriteHandlerContext context) {
+                     // 第一个单元格
+                        // 只要不是头 一定会有数据 当然fill的情况 可能要context.getCellDataList() ,这个需要看模板，因为一个单元格会有多个 WriteCellData
+                        WriteCellData<?> cellData = context.getFirstCellData();
+                        // 这里需要去cellData 获取样式
+                        // 很重要的一个原因是 WriteCellStyle 和 dataFormatData绑定的 简单的说 比如你加了 DateTimeFormat
+                        // ，已经将writeCellStyle里面的dataFormatData 改了 如果你自己new了一个WriteCellStyle，可能注解的样式就失效了
+                        // 然后 getOrCreateStyle 用于返回一个样式，如果为空，则创建一个后返回
+                        WriteCellStyle writeCellStyle = cellData.getOrCreateStyle();
+                        writeCellStyle.setFillForegroundColor(IndexedColors.RED.getIndex());
+                        // 这里需要指定 FillPatternType 为FillPatternType.SOLID_FOREGROUND
+                        writeCellStyle.setFillPatternType(FillPatternType.SOLID_FOREGROUND);
+    }
 ```
-#### 关于maxCacheActivateSize 也就是前面第二个参数的详细说明
-easyexcel在使用文件存储的时候，会把共享字符串拆分成1000条一批，然后放到文件存储。然后excel来读取共享字符串大概率是按照顺序的，所以默认20M的1000条的数据放在内存，命中后直接返回，没命中去读文件。所以不能设置太小，太小了，很难命中，一直去读取文件，太大了的话会占用过多的内存。
-#### 如何判断 maxCacheActivateSize是否需要调整
-开启debug日志会输出`Already put :4000000` 最后一次输出，大概可以得出值为400W,然后看`Cache misses count:4001`得到值为4K，400W/4K=1000 这代表已经`maxCacheActivateSize` 已经非常合理了。如果小于500 问题就非常大了，500到1000 应该都还行。
+
+* 读的时候`invoke`里面抛出异常，不会再额外封装一层`ExcelAnalysisException` （不会编译报错）
+    * 这个捕获异常的时候 不用再`getCause`了
+* 样式等注解涉及到 `boolean` or 一些枚举 值的 有变动，新增默认值（会编译报错，注解改就行）
+    * 这个直接改了就行
+
+### 我在本地可以，发布到线上环境怎么不可以了？
+
+大概率是缺少字体库导致，2个方案：
+
+* 安装字体（推荐）
+    * 看下服务器是否安装了字体，jdk8字体需要自己安装请安装字体：dejavu-sans-fonts 和 fontconfig 在dockerfile中增加字体安装命令：
+      ```RUN yum install dejavu-sans-fonts fontconfig -y```
+    * 普通的线上环境直接运行： ```yum install dejavu-sans-fonts fontconfig -y```
+* 开启内存处理模式（不推荐，1W数据以内可以考虑，大了很容易OOM）
+
+```java 
+        EasyExcel
+        .write(fileName, DemoData.class)
+        // 核心这个配置 开始内存处理模式
+        .inMemory(Boolean.TRUE)
+        .sheet("模板")
+        .doWrite(data());
+```
+
+## 高频问题
+
+### 我的部分字段为什么没法读取或者写入？
+
+* 读写反射对象用到了`Cglib`,所以成员变量必须符合驼峰规范，请确认是否符合驼峰规范
+    * 在`3.0.0-beta1` 兼容了部分非驼峰，但是还是不建议使用非驼峰字段
+* 使用了`lombok`的`@Accessors(chain = true)` ，无法被`Cglib`读取
+    * 建议使用`@Builder`来替换`@Accessors(chain = true)`

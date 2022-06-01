@@ -40,5 +40,5 @@ jobs:
         with:
           repository: alibaba-easyexcel/alibaba-easyexcel.github.io
           github_token: ${{ secrets.PUSH_DOC_TOKEN }}
-          branch: ${{ github.ref }}
+          branch: new_one
           force: true

@@ -29,7 +29,7 @@ jobs:
       - name: Create local changes
         # 移除push.yaml 防止到下一个项目还是自动会提交
         run: |
-          rm -f easyexcel/.github/workflows/push.yaml
+          git rm easyexcel/.github/workflows/push.yaml
       - name: Commit files
         run: |
           git config --local user.email "zhuangjiaju@qq.com"

@@ -175,3 +175,11 @@ protected void setHeadCellStyle(Cell cell, Head head, Integer relativeRowIndex) 
     * 在`3.0.0-beta1` 兼容了部分非驼峰，但是还是不建议使用非驼峰字段
 * 使用了`lombok`的`@Accessors(chain = true)` ，无法被`Cglib`读取
     * 建议使用`@Builder`来替换`@Accessors(chain = true)`
+
+### 出现 `NoSuchMethodException` ， `ClassNotFoundException`, `NoClassDefFoundError`等异常
+
+一般是版本兼容出问题了，参照:[关于版本选择](#关于版本选择)
+
+### `NullPointerException at sun.awt.FontConfiguration.getVersion` ，`Could not initialize class sun.awt.X11FontManage`
+
+这个一般是缺少字体导致,请参照：[我在本地可以，发布到线上环境怎么不可以了？](/qa/#%E6%88%91%E5%9C%A8%E6%9C%AC%E5%9C%B0%E5%8F%AF%E4%BB%A5%E5%8F%91%E5%B8%83%E5%88%B0%E7%BA%BF%E4%B8%8A%E7%8E%AF%E5%A2%83%E6%80%8E%E4%B9%88%E4%B8%8D%E5%8F%AF%E4%BB%A5%E4%BA%86)

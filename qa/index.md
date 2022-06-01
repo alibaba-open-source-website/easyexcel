@@ -45,6 +45,19 @@ sidebar_position: 1
 * 如果您的版本低于2.1.6,建升级到以上版本
 * 升级了还有，在类的最上面加入`@ExcelIgnoreUnannotated`注解，加入这个注解后只有加了`@ExcelProperty`才会参与读写。
 
+### `csv`读写的支持
+在`3.0.0-beta1`版本开始支持，读的时候会自动判断。写的时候指定`excelType`就行。
+```java 
+   EasyExcel.write(fileName, DemoData.class)
+            // 指定导出类型为csv
+            .excelType(ExcelTypeEnum.CSV)
+            .sheet("模板")
+            .doWrite(() -> {
+                // 分页查询数据
+                return data();
+            });
+```
+
 ## 兼容性问题
 
 ### 读取文件务必使用2.0.5+

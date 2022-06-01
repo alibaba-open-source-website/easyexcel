@@ -113,7 +113,7 @@ const config = {
                     },
                     {
                         type: 'doc',
-                        docId: 'api/index',
+                        docId: 'api/read',
                         position: 'right',
                         label: 'API',
                     },

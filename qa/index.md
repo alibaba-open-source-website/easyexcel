@@ -14,7 +14,8 @@ sidebar_position: 1
 ### pom导入
 
 复制以下代码，并替换成最新版本，或者直接打开：[![Maven central](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel)
-，右边可以直接复制
+，右边可以直接复制   
+如果看不到图片则直接打开：[https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel)
 
 ```xml
 
@@ -28,7 +29,8 @@ sidebar_position: 1
 ### 查看最新版本
 
 图片的绿色小字就是最新版本：
-[![Maven central](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel)
+[![Maven central](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel)   
+如果看不到图片则直接打开：[https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel)
 
 ### 写excel的情况下填充和写怎么选择？
 
@@ -46,7 +48,9 @@ sidebar_position: 1
 * 升级了还有，在类的最上面加入`@ExcelIgnoreUnannotated`注解，加入这个注解后只有加了`@ExcelProperty`才会参与读写。
 
 ### `csv`读写的支持
+
 在`3.0.0-beta1`版本开始支持，读的时候会自动判断。写的时候指定`excelType`就行。
+
 ```java 
    EasyExcel.write(fileName, DemoData.class)
             // 指定导出类型为csv
@@ -83,7 +87,7 @@ sidebar_position: 1
 | 2.0.0-beta1-2.2.11 | 3.17 (3.17 - 4.1.2)   | jdk6 - jdk11 | 不推荐项目新引入此版本，除非是jdk6否则不推荐使用，除非超级严重bug,否则不再更新 |
 | 1+版本               | 3.17 (3.17 - 4.1.2)   | jdk6 - jdk11 | 不推荐项目新引入此版本，超级严重bug,也不再更新                   |
 
-:::tip
+:::important
 3+版本的的easyexcel，使用poi 5+版本时，需要自己引入poi 5+版本的包，且手动排除：poi-ooxml-schemas，例如：
 
 ```xml

@@ -66,7 +66,7 @@ export default function Home() {
     return (
         <Layout
             // 首页的标题
-            title={`欢迎光临${siteConfig.title}`}
+            title={`欢迎使用${siteConfig.title}`}
             // 首页的description
             description="快速、简洁、解决大文件内存溢出的java处理Excel工具">
             <header className={clsx('hero hero--primary', styles.heroBanner)}>

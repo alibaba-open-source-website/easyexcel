@@ -1,5 +1,5 @@
 ---
-title: 常见问题-必读
+title: 必读
 sidebar_position: 1
 ---
 

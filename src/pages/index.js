@@ -17,32 +17,29 @@ import styles from './styles.module.css';
 
 const features = [
     {
-        title: 'Easy to Use',
+        title: '快速',
         imageUrl: 'img/undraw_docusaurus_mountain.svg',
         description: (
             <>
-                Docusaurus was designed from the ground up to be easily installed and
-                used to get your website up and running quickly.
+                快速的读取<code>excel</code>中的数据。
             </>
         ),
     },
     {
-        title: 'Focus on What Matters',
+        title: '简洁',
         imageUrl: 'img/undraw_docusaurus_tree.svg',
         description: (
             <>
-                Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-                ahead and move your docs into the <code>docs</code> directory.
+                映射<code>excel</code>和实体类，让代码变的更加简洁。
             </>
         ),
     },
     {
-        title: 'Powered by React',
+        title: '大文件',
         imageUrl: 'img/undraw_docusaurus_react.svg',
         description: (
             <>
-                Extend or customize your website layout by reusing React. Docusaurus can
-                be extended while reusing the same header and footer.
+                在读写大文件的时候使用磁盘做缓存，更加的节约内存。
             </>
         ),
     },

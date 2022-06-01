@@ -24,6 +24,8 @@ jobs:
         with:
           # 使用 GITHUB_TOKEN
           persist-credentials: false
+          # 不然会无法推送到远程仓库
+          fetch-depth: 0
           # main分支
           ref: main
       - name: Create local changes

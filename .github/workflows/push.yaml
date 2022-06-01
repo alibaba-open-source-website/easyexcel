@@ -38,7 +38,7 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          repository: https://github.com/alibaba-easyexcel/alibaba-easyexcel.github.io
-          github_token: xxxx
+          repository: alibaba-easyexcel/alibaba-easyexcel.github.io
+          github_token: ${{ secrets.PUSH_DOC_TOKEN }}
           branch: ${{ github.ref }}
           force: true

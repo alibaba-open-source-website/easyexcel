@@ -1,5 +1,5 @@
 ---
-title: 读Excel | API
+title: 读Excel
 sidebar_position: 1
 ---
 

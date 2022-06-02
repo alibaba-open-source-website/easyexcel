@@ -88,6 +88,10 @@ const config = {
             prism: {
                 //  这里设置 支持```java ``` 这种代码块的样式，详细文档参照： https://www.docusaurus.cn/docs/markdown-features/code-blocks
                 additionalLanguages: ['java'],
+                // 可以配置不同的代码块样式 参考：https://docusaurus.io/docs/markdown-features/code-blocks#supported-languages
+                // 可选项：https://github.com/FormidableLabs/prism-react-renderer/tree/master/src/themes
+                theme: require('prism-react-renderer/themes/github'),
+                darkTheme: require('prism-react-renderer/themes/dracula'),
             },
             // 这里设置关键字 和描述 ，方便给搜索引擎收录
             metadata: [

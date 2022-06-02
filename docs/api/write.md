@@ -1,5 +1,5 @@
 ---
-title: 写Excel | API
+title: 写Excel
 sidebar_position: 2
 ---
 

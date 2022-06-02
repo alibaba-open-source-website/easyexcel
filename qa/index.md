@@ -1,5 +1,6 @@
 ---
-title: 必读
+title: 必读 | QA
+sidebar_label: 必读
 sidebar_position: 1
 ---
 

@@ -1,5 +1,6 @@
 ---
-title: 读excel
+title: 读Excel | QA
+sidebar_label: 读Excel
 sidebar_position: 2
 ---
 

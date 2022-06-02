@@ -1,5 +1,6 @@
 ---
-title: 写excel
+title: 写Excel | QA
+sidebar_label: 写Excel
 sidebar_position: 3
 ---
 

@@ -99,6 +99,7 @@ analysisContext.readSheetHolder().getApproximateTotalRowNumber();
 
 ### 开启急速模式
 
+急速模式可以自己开启后测试下内存的占用，如果感觉符合预期可以直接开启。   
 如果最大文件条数也就十几二十万，然后excel也就是十几二十M，而且不会有很高的并发，并且内存也较大。这种情况下可以考虑开启极速模式。
 
 ```java

@@ -1,5 +1,5 @@
 ---
-title: 写excel
+title: 写Excel
 sidebar_position: 2
 ---
 

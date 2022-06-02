@@ -13,7 +13,7 @@
 const config = {
     title: 'Easy Excel',
     tagline: '快速、简洁、解决大文件内存溢出的java处理Excel工具',
-    url: 'https://easyexcel.opensource.alibaba.com/',
+    url: 'https://easyexcel.opensource.alibaba.com',
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
@@ -110,7 +110,7 @@ const config = {
                 logo: {
                     alt: 'Easy Excel',
                     src: 'img/logo.png',
-                    href: 'https://easyexcel.opensource.alibaba.com/',
+                    href: 'https://easyexcel.opensource.alibaba.com',
                     target: '_self',
                 },
                 items: [

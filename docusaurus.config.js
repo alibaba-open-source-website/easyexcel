@@ -12,7 +12,7 @@
 /** @type {import('@docusaurus/types').Config} */
 const config = {
     title: 'Easy Excel',
-    tagline: '快速、简洁、解决大文件内存溢出的java处理Excel工具',
+    tagline: 'EasyExcel是一个基于Java的，快速、简洁、解决大文件内存溢出的Excel处理工具。',
     url: 'https://easyexcel.opensource.alibaba.com',
     baseUrl: '/',
     onBrokenLinks: 'throw',
@@ -101,7 +101,7 @@ const config = {
                 },
                 {
                     name: 'description',
-                    content: '快速、简洁、解决大文件内存溢出的java处理Excel工具'
+                    content: 'EasyExcel是一个基于Java的，快速、简洁、解决大文件内存溢出的Excel处理工具。'
                 },
             ],
             // 最上面的广告位

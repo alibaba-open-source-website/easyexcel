@@ -93,7 +93,7 @@ const config = {
                 theme: require('prism-react-renderer/themes/github'),
                 darkTheme: require('prism-react-renderer/themes/oceanicNext'),
             },
-            // 这里设置关键字 和描述 ，方便给搜索引擎收录
+            // 这里设置关键字 和描述 ，方便给搜索引擎收录 https://docusaurus.io/docs/seo#global-metadata
             metadata: [
                 {
                     name: 'keywords',
@@ -104,7 +104,7 @@ const config = {
                     content: 'EasyExcel是一个基于Java的，快速、简洁、解决大文件内存溢出的Excel处理工具。'
                 },
             ],
-            // 最上面的广告位
+            // 最上面的广告位  https://docusaurus.io/docs/api/themes/configuration#announcement-bar
             announcementBar: {
                 id: 'announcementBar-2',
                 content: '⭐ 开源不易，如果觉得本项目对您的工作还是有帮助的话， 请帮忙在<a target="_blank" rel="noopener noreferrer" href="https://github.com/alibaba/easyexcel">GitHub</a> 点个⭐️',

@@ -110,7 +110,9 @@ const config = {
                 content: '⭐ 开源不易，如果觉得本项目对您的工作还是有帮助的话， 请帮忙在<a target="_blank" rel="noopener noreferrer" href="https://github.com/alibaba/easyexcel">GitHub</a> 点个⭐️',
             },
             navbar: {
+                // 设置标题
                 title: 'Easy Excel',
+                // 设置导航条的log
                 logo: {
                     alt: 'Easy Excel',
                     src: 'img/logo.png',
@@ -118,6 +120,7 @@ const config = {
                     target: '_self',
                 },
                 items: [
+                    // 设置文档菜单 以及索引
                     {
                         type: 'doc',
                         docId: 'index',

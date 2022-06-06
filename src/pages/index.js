@@ -66,9 +66,9 @@ export default function Home() {
     return (
         <Layout
             // 首页的标题
-            title={`欢迎使用${siteConfig.title}`}
+            title={`首页`}
             // 首页的description
-            description="快速、简洁、解决大文件内存溢出的java处理Excel工具">
+            description="EasyExcel是一个基于Java的，快速、简洁、解决大文件内存溢出的Excel处理工具。">
             <header className={clsx('hero hero--primary', styles.heroBanner)}>
                 <div className="container">
                     <h1 className="hero__title">{siteConfig.title}</h1>

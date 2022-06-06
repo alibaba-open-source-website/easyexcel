@@ -20,7 +20,7 @@ github地址:[https://github.com/alibaba/easyexcel](https://github.com/alibaba/e
 
 ## 64M内存20秒读取75M(46W行25列)的Excel（3.0.2+版本）
 当然还有[极速模式](/qa/read#%E5%BC%80%E5%90%AF%E6%80%A5%E9%80%9F%E6%A8%A1%E5%BC%8F)能更快，但是内存占用会在100M多一点
-![img](/img/large_v3.0.x.png)
+![img](./img/large.png)
 
 ## 维护者
 姬朋飞（玉霄)、庄家钜、怀宇

@@ -28,7 +28,7 @@ DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/master/easyexcel-t
 
 ### excel示例
 
-![img](/img/quickstart/write/simpleWrite.png)
+![img](../img/quickstart/write/simpleWrite.png)
 
 ### 最简单的写的对象
 
@@ -97,7 +97,7 @@ public class DemoData {
 
 ### excel示例
 
-![img](/img/quickstart/write/simpleWrite.png)
+![img](../img/quickstart/write/simpleWrite.png)
 
 ### 对象
 
@@ -143,7 +143,7 @@ public class DemoData {
 
 ### excel示例
 
-![img](/img/quickstart/write/indexWrite.png)
+![img](../img/quickstart/write/indexWrite.png)
 
 ### 对象
 
@@ -185,7 +185,7 @@ public class IndexData {
 
 ### excel示例
 
-![img](/img/quickstart/write/complexHeadWrite.png)
+![img](../img/quickstart/write/complexHeadWrite.png)
 
 ### 对象
 
@@ -224,7 +224,7 @@ public class ComplexHeadData {
 
 ### excel示例
 
-![img](/img/quickstart/write/repeatedWrite.png)
+![img](../img/quickstart/write/repeatedWrite.png)
 
 ### 对象
 
@@ -294,7 +294,7 @@ public class ComplexHeadData {
 
 ### excel示例
 
-![img](/img/quickstart/write/converterWrite.png)
+![img](../img/quickstart/write/converterWrite.png)
 
 ### 对象
 
@@ -344,7 +344,7 @@ public class ConverterData {
 
 ### excel示例
 
-![img](/img/quickstart/write/imageWrite.png)
+![img](../img/quickstart/write/imageWrite.png)
 
 ### 对象
 
@@ -463,7 +463,7 @@ public class ImageDemoData {
 
 ### excel示例
 
-![img](/img/quickstart/write/writeCellDataWrite.png)
+![img](../img/quickstart/write/writeCellDataWrite.png)
 
 ### 对象
 
@@ -591,11 +591,11 @@ public class WriteCellDemoData {
 
 ### 模板excel示例
 
-![img](/img/quickstart/read/demo.png)
+![img](../img/quickstart/read/demo.png)
 
 ### excel示例
 
-![img](/img/quickstart/write/templateWrite.png)
+![img](../img/quickstart/write/templateWrite.png)
 
 ### 对象
 
@@ -624,7 +624,7 @@ public class WriteCellDemoData {
 
 ### excel示例
 
-![img](/img/quickstart/write/widthAndHeightWrite.png)
+![img](../img/quickstart/write/widthAndHeightWrite.png)
 
 ### 对象
 
@@ -674,7 +674,7 @@ public class WidthAndHeightData {
 
 ### excel示例
 
-![img](/img/quickstart/write/annotationStyleWrite.png)
+![img](../img/quickstart/write/annotationStyleWrite.png)
 
 ### 对象
 
@@ -761,7 +761,7 @@ public class DemoStyleData {
 
 ### excel示例
 
-![img](/img/quickstart/write/styleWrite.png)
+![img](../img/quickstart/write/styleWrite.png)
 
 ### 对象
 
@@ -883,7 +883,7 @@ public class DemoStyleData {
 
 ### excel示例
 
-![img](/img/quickstart/write/mergeWrite.png)
+![img](../img/quickstart/write/mergeWrite.png)
 
 ### 对象
 
@@ -944,7 +944,7 @@ public class DemoMergeData {
 
 ### excel示例
 
-![img](/img/quickstart/write/tableWrite.png)
+![img](../img/quickstart/write/tableWrite.png)
 
 ### 对象
 
@@ -983,7 +983,7 @@ public class DemoMergeData {
 
 ### excel示例
 
-![img](/img/quickstart/write/dynamicHeadWrite.png)
+![img](../img/quickstart/write/dynamicHeadWrite.png)
 
 ### 对象
 
@@ -1031,7 +1031,7 @@ public class DemoMergeData {
 
 ### excel示例
 
-![img](/img/quickstart/write/longestMatchColumnWidthWrite.png)
+![img](../img/quickstart/write/longestMatchColumnWidthWrite.png)
 
 ### 对象
 
@@ -1093,7 +1093,7 @@ public class LongestMatchColumnWidthData {
 
 ### excel示例
 
-![img](/img/quickstart/write/customHandlerWrite.png)
+![img](../img/quickstart/write/customHandlerWrite.png)
 
 ### 对象
 
@@ -1176,7 +1176,7 @@ public class CustomSheetWriteHandler implements SheetWriteHandler {
 
 ### excel示例
 
-![img](/img/quickstart/write/commentWrite.png)
+![img](../img/quickstart/write/commentWrite.png)
 
 ### 对象
 
@@ -1238,7 +1238,7 @@ public class CommentWriteHandler implements RowWriteHandler {
 
 ### excel示例
 
-![img](/img/quickstart/write/variableTitleWrite.png)
+![img](../img/quickstart/write/variableTitleWrite.png)
 
 ### 对象
 
@@ -1318,7 +1318,7 @@ public class ConverterData {
 
 ### excel示例
 
-![img](/img/quickstart/write/simpleWrite.png)
+![img](../img/quickstart/write/simpleWrite.png)
 
 ### 代码
 

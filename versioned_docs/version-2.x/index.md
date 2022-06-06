@@ -19,7 +19,7 @@ github地址:[https://github.com/alibaba/easyexcel](https://github.com/alibaba/e
 
 ### 64M内存1分钟内读取75M(46W行25列)的Excel
 当然还有急速模式能更快，但是内存占用会在100M多一点
-![img](/img/large.png)
+![img](./img/large.png)
 
 ### 快速开始
 #### 读Excel

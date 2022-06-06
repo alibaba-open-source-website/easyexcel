@@ -7,7 +7,7 @@ sidebar_position: 1
 DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/read/ReadTest.java](https://github.com/alibaba/easyexcel/blob/v2.2.11/src/test/java/com/alibaba/easyexcel/test/demo/read/ReadTest.java)
 ## 最简单的读
 ### 最简单的读的excel示例
-![img](/img/quickstart/read/demo.png)
+![img](../img/quickstart/read/demo.png)
 ### 最简单的读的对象
 ```java
 @Data

@@ -11,7 +11,7 @@ DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/master/easyexcel-t
 
 ### 最简单的读的excel示例
 
-![img](/img/quickstart/read/demo.png)
+![img](../img/quickstart/read/demo.png)
 
 ### 最简单的读的对象
 
@@ -532,7 +532,7 @@ public class CustomStringStringConverter implements Converter<String> {
 
 ### excel示例
 
-![img](/img/quickstart/read/extra.png)
+![img](../img/quickstart/read/extra.png)
 
 ### 对象
 
@@ -632,7 +632,7 @@ public class DemoExtraListener implements ReadListener<DemoExtraData> {
 
 ### excel示例
 
-![img](/img/quickstart/read/cellDataRead.png)
+![img](../img/quickstart/read/cellDataRead.png)
 
 ### 对象
 

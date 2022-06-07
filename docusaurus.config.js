@@ -97,7 +97,7 @@ const config = {
             metadata: [
                 {
                     name: 'keywords',
-                    content: 'easyexcel 官方,easyexcel官方文档,easyexcel,easyexcel官网,easyexcel official,Excel,Easy Excel,Java,xls,xlsx,csv,省内存,简单,读excel,写excel,解析Excel,poi,oom,OutOfMemoryError'
+                    content: 'easyexcel 官方,easyexcel官方文档,easyexcel,easyexcel官网,easy excel,esayexcel,easyexcle,easyexcal,easyexecl,eazyexcel,easyexcel文档,easy-excel,easyexcel official,Excel,Easy Excel,Java,xls,xlsx,csv,省内存,简单,读excel,写excel,解析Excel,poi,oom,OutOfMemoryError'
                 },
                 {
                     name: 'description',

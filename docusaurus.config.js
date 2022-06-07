@@ -93,24 +93,26 @@ const config = {
                 theme: require('prism-react-renderer/themes/github'),
                 darkTheme: require('prism-react-renderer/themes/oceanicNext'),
             },
-            // 这里设置关键字 和描述 ，方便给搜索引擎收录
+            // 这里设置关键字 和描述 ，方便给搜索引擎收录 https://docusaurus.io/docs/seo#global-metadata
             metadata: [
                 {
                     name: 'keywords',
-                    content: 'easyexcel 官方,easyexcel官方文档,easyexcel,easyexcel官网,easyexcel official,Excel,Easy Excel,Java,xls,xlsx,csv,省内存,简单,读excel,写excel,解析Excel,poi,oom,OutOfMemoryError'
+                    content: 'easyexcel 官方,easyexcel官方文档,easyexcel,easyexcel官网,easy excel,esayexcel,easyexcle,easyexcal,easyexecl,eazyexcel,easyexcel文档,easy-excel,easyexcel official,Excel,Easy Excel,Java,xls,xlsx,csv,省内存,简单,读excel,写excel,解析Excel,poi,oom,OutOfMemoryError'
                 },
                 {
                     name: 'description',
                     content: 'EasyExcel是一个基于Java的，快速、简洁、解决大文件内存溢出的Excel处理工具。'
                 },
             ],
-            // 最上面的广告位
+            // 最上面的广告位  https://docusaurus.io/docs/api/themes/configuration#announcement-bar
             announcementBar: {
                 id: 'announcementBar-2',
                 content: '⭐ 开源不易，如果觉得本项目对您的工作还是有帮助的话， 请帮忙在<a target="_blank" rel="noopener noreferrer" href="https://github.com/alibaba/easyexcel">GitHub</a> 点个⭐️',
             },
             navbar: {
+                // 设置标题
                 title: 'Easy Excel',
+                // 设置导航条的log
                 logo: {
                     alt: 'Easy Excel',
                     src: 'img/logo.png',
@@ -118,6 +120,7 @@ const config = {
                     target: '_self',
                 },
                 items: [
+                    // 设置文档菜单 以及索引
                     {
                         type: 'doc',
                         docId: 'index',

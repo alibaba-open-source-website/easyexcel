@@ -12,7 +12,7 @@
 /** @type {import('@docusaurus/types').Config} */
 const config = {
     title: 'Easy Excel',
-    tagline: 'EasyExcel是一个基于Java的，快速、简洁、解决大文件内存溢出的Excel处理工具。',
+    tagline: 'EasyExcel是一个基于Java的，快速、简洁、解决大文件内存溢出的Excel处理工具。他能让你在不用考虑性能、内存的等因素的情况下，快速完成Excel的读、写等功能。',
     url: 'https://easyexcel.opensource.alibaba.com',
     baseUrl: '/',
     onBrokenLinks: 'throw',
@@ -101,7 +101,7 @@ const config = {
                 },
                 {
                     name: 'description',
-                    content: 'EasyExcel是一个基于Java的，快速、简洁、解决大文件内存溢出的Excel处理工具。'
+                    content: 'EasyExcel是一个基于Java的，快速、简洁、解决大文件内存溢出的Excel处理工具。他能让你在不用考虑性能、内存的等因素的情况下，快速完成Excel的读、写等功能。'
                 },
             ],
             // 最上面的广告位  https://docusaurus.io/docs/api/themes/configuration#announcement-bar

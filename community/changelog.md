@@ -296,7 +296,7 @@ sidebar_position: 4
 # 2.0.0-beta6
 
 * 修复空行读取空指针异常
-* 修复写入指定头为List<List<String>>,但是数据用List<Class>导致的空指针
+* 修复写入指定头为```List<List<String>>```,但是数据用```List<Class>```导致的空指针
 
 # 2.0.0-beta5
 
@@ -304,7 +304,7 @@ sidebar_position: 4
 
 # 2.0.0-beta4
 
-* 修改在传入List<List<Object>>判断行数错误 [Issue #526](https://github.com/alibaba/easyexcel/issues/526)
+* 修改在传入```List<List<Object>>```判断行数错误 [Issue #526](https://github.com/alibaba/easyexcel/issues/526)
 * 修复在mac 2016 2017导出的excel 可能存在多余字段的问题
 * 修复03版 读取无法指定sheet的问题 [Issue #533](https://github.com/alibaba/easyexcel/issues/533)
 

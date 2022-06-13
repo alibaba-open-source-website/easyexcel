@@ -21,6 +21,16 @@ const config = {
     organizationName: 'alibaba', // Usually your GitHub org/user name.
     projectName: 'easyexcel', // Usually your repo name.
 
+    // 接入开源官网的流量统计
+    scripts: [
+        {
+            src: '//g.alicdn.com/alilog/mlog/aplus_v2.js',
+            id: 'beacon-aplus',
+            exparams: 'clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx',
+        },
+        '//g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js'
+    ],
+
     presets: [
         [
             'classic',
@@ -103,11 +113,22 @@ const config = {
                     name: 'description',
                     content: 'EasyExcel是一个基于Java的、快速、简洁、解决大文件内存溢出的Excel处理工具。他能让你在不用考虑性能、内存的等因素的情况下，快速完成Excel的读、写等功能。'
                 },
+                // 接入开源官网的流量统计
+                {
+                    name: 'aes-config',
+                    content: 'pid=xux-opensource&user_type=101&uid=&username='
+                },
             ],
             // 最上面的广告位  https://docusaurus.io/docs/api/themes/configuration#announcement-bar
             announcementBar: {
                 id: 'announcementBar-2',
                 content: '⭐ 开源不易，如果觉得本项目对您的工作还是有帮助的话， 请帮忙在<a target="_blank" rel="noopener noreferrer" href="https://github.com/alibaba/easyexcel">GitHub</a> 点个⭐️',
+            },
+            // 接入algolia搜索引擎
+            algolia: {
+                appId: 'F6HGNCPO3I',
+                apiKey: 'ebcbf48764c1c5385aebc9855fbf5fdd',
+                indexName: 'easyexcel',
             },
             navbar: {
                 // 设置标题
@@ -157,10 +178,6 @@ const config = {
                         label: 'GitHub',
                         position: 'right',
                     },
-                    {
-                        type: 'search',
-                        position: 'right',
-                    },
                 ],
             },
             footer: {
@@ -173,17 +190,6 @@ const config = {
                 copyright: `Copyright © ${new Date().getFullYear()} Alibaba, Inc. Built with Docusaurus.`,
             },
         }),
-
-    themes: [
-        [
-            require.resolve("@easyops-cn/docusaurus-search-local"),
-            {
-                // `hashed` is recommended as long-term-cache of index file is possible.
-                hashed: true,
-                language: ["en", "zh"],
-            },
-        ],
-    ],
 
     // 国际化
     // 这里设置默认为中文 ，不设置的话默认为英文，可能部分展示出来是英文

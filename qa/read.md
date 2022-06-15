@@ -80,6 +80,31 @@ sidebar_position: 2
 analysisContext.readSheetHolder().getApproximateTotalRowNumber();
 ```
 
+## 修改csv文件读取的配置
+
+这里面举例修改 csv的分隔符为 ';' 的情况
+
+```java
+        // 修改读取csv文件的配置
+        String fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.csv";
+        // 一个文件一个reader
+        try (ExcelReader excelReader = EasyExcel.read(fileName, DemoData.class, new DemoDataListener()).build()) {
+            // ReadWorkbookHolder 存储了Workbook 的所有信息
+            ReadWorkbookHolder readWorkbookHolder = excelReader.analysisContext().readWorkbookHolder();
+            // 判断只有csv 才需要修改配置信息
+            if (readWorkbookHolder instanceof CsvReadWorkbookHolder) {
+                CsvReadWorkbookHolder csvReadWorkbookHolder = (CsvReadWorkbookHolder)readWorkbookHolder;
+                // 底层读取csv 用的是apache的common-csv 所以设置 CsvFormat即可
+                csvReadWorkbookHolder.setCsvFormat(csvReadWorkbookHolder.getCsvFormat().withDelimiter(';'));
+            }
+
+            // 构建一个sheet 这里可以指定名字或者no
+            ReadSheet readSheet = EasyExcel.readSheet(0).build();
+            // 读取一个sheet
+            excelReader.read(readSheet);
+        }
+```
+
 ## 10M+文件读取说明(如果感觉目前效率还行后面的都不需要看)
 
 03版没有办法处理，相对内存占用大很多。   

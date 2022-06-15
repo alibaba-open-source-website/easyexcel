@@ -80,7 +80,7 @@ sidebar_position: 2
 analysisContext.readSheetHolder().getApproximateTotalRowNumber();
 ```
 
-## 修改csv文件读取的配置
+### 修改csv文件读取的配置
 
 这里面举例修改 csv的分隔符为 ';' 的情况
 

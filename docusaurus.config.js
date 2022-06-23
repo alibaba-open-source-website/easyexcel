@@ -213,11 +213,10 @@ const config = {
     // 接入开源官网的流量统计
     scripts: [
         {
-            src: '//g.alicdn.com/alilog/mlog/aplus_v2.js',
-            id: 'beacon-aplus',
-            exparams: 'clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx',
+            src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2502914862128322',
+            async: true,
+            crossorigin: 'anonymous',
         },
-        '//g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js'
     ],
 
     // 国际化

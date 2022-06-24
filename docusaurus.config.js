@@ -111,6 +111,7 @@ const config = {
                             },
                         },
                     ],
+                    postBodyTags: [`<div class="wwads-cn wwads-vertical" data-id="173" style="max-width:200px"></div>`],
                 }
             },
         ],
@@ -210,10 +211,11 @@ const config = {
             },
         }),
 
-    // 没错 这个就是广告 留下了没有赚钱本领的眼泪
+    // 没错 这个就是广告 留下了没有赚钱本领的泪水
     scripts: [
         {
             src: 'https://cdn.wwads.cn/js/makemoney.js',
+            charset : 'UTF-8',
             async: true,
         },
     ],

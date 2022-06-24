@@ -111,7 +111,7 @@ const config = {
                             },
                         },
                     ],
-                    postBodyTags: [`<div class="wwads-cn wwads-vertical" data-id="173" style="max-width:200px"></div>`],
+                    postBodyTags: [`<div class="wwads-cn wwads-vertical" data-id="173" style="max-width:160px;position:fixed;right:15px;bottom:15px;z-index:10000"></div>`],
                 }
             },
         ],

@@ -210,16 +210,16 @@ const config = {
             },
         }),
 
-    // 接入开源官网的流量统计
+    // 没错 这个就是广告 留下了没有赚钱本领的眼泪
     scripts: [
         {
-            src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2502914862128322',
+            src: 'https://cdn.wwads.cn/js/makemoney.js',
             async: true,
-            crossorigin: 'anonymous',
         },
     ],
 
-    // 国际化
+
+// 国际化
     // 这里设置默认为中文 ，不设置的话默认为英文，可能部分展示出来是英文
     // 真正要做国际化参考： https://docusaurus.io/docs/i18n/git 这里注意执行一个命令就行了，不需要自己一个个的创建文件
     i18n: {

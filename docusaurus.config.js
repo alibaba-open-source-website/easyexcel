@@ -111,8 +111,6 @@ const config = {
                             },
                         },
                     ],
-                    // 这个是广告 只想接入开源官网统复制的时候别带上这个
-                    postBodyTags: [`<div class="wwads-cn wwads-vertical" data-id="173" style="max-width:160px;position:fixed;right:15px;bottom:15px;z-index:10000"></div>`],
                 }
             },
         ],

@@ -26,7 +26,7 @@ export default function TOC({className, ...props}: Props): JSX.Element {
     return (
         <div className={clsx(styles.tableOfContents, 'thin-scrollbar', className)}>
             {/* 在加载markdown的时候加入个广告 */}
-            <div className={classnames('wwads-cn', 'wwads-horizontal')} data-id="173"></div>
+            <div className={classnames('wwads-cn', 'wwads-vertical')} data-id="173"></div>
 
             <TOCItems
                 {...props}

@@ -1,0 +1,175 @@
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg44"
+   version="1.1"
+   viewBox="0 0  380 280">
+  <metadata
+     id="metadata50">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs48" />
+  <svg
+     height="100%"
+     width="100%"
+     id="svg9"
+     version="1.1"
+     viewBox="0 0 380 280">
+    <linearGradient
+       y2="0"
+       x2="1"
+       y1="0"
+       x1="0"
+       id="bg_color_gradient">
+      <stop
+         id="stop2"
+         style="stop-color:#EEEDDB;stop-opacity:1"
+         offset="0%" />
+      <stop
+         id="stop4"
+         style="stop-color:#EEEDDB;stop-opacity:1"
+         offset="100%" />
+    </linearGradient>
+    <path
+       id="rect7"
+       d="M 0,0 H 380 V 280 H 0 Z"
+       style="fill:url(#bg_color_gradient);fill-opacity:1" />
+  </svg>
+  <linearGradient
+     y2="0%"
+     x2="100%"
+     y1="0%"
+     x1="40%"
+     id="grad1">
+    <stop
+       id="stop11"
+       style="stop-color:#3F9F2A;stop-opacity:1"
+       offset="10%" />
+    <stop
+       id="stop13"
+       style="stop-color:#3F9F2A;stop-opacity:1"
+       offset="100%" />
+  </linearGradient>
+  <path
+     id="path16"
+     style="fill:url(#grad1);"
+     d="M169.625 110.0 L 235.375 110.0  L 230.375 150.0 L 164.625 150.0 Z " />
+  <g
+     id="text18"
+     style="font-size:40px;font-family:IDMeiLingTi;fill:#eeeddb;fill-opacity:1"
+     aria-label="E">
+    <path
+       id="path53"
+       style="font-size:40px;font-family:IDMeiLingTi;fill:#eeeddb;fill-opacity:1"
+       d="m 174.805,115.19 h 21.12 q 0,1.4 -0.6,2.16 -0.6,0.72 -2,0.72 h -12.6 v 10.04 h 13.6 q 0,1.32 -0.56,2.08 -0.56,0.76 -1.92,0.76 h -11.12 v 10.96 h 15.4 q 0,1.4 -0.6,2.12 -0.56,0.72 -2,0.72 h -14.88 q -2.08,0 -2.96,-1.04 -0.88,-1.08 -0.88,-3.2 z" />
+  </g>
+  <g
+     id="text20"
+     style="font-size:40px;font-family:IDMeiLingTi;fill:#eeeddb;fill-opacity:1"
+     aria-label="E">
+    <path
+       id="path56"
+       style="font-size:40px;font-family:IDMeiLingTi;fill:#eeeddb;fill-opacity:1"
+       d="m 203.68,115.19 h 21.12 q 0,1.4 -0.6,2.16 -0.6,0.72 -2,0.72 h -12.6 v 10.04 h 13.6 q 0,1.32 -0.56,2.08 -0.56,0.76 -1.92,0.76 H 209.6 v 10.96 H 225 q 0,1.4 -0.6,2.12 -0.56,0.72 -2,0.72 h -14.88 q -2.08,0 -2.96,-1.04 -0.88,-1.08 -0.88,-3.2 z" />
+  </g>
+  <path
+     id="path22"
+     style="fill:#3F9F2A;"
+     d="M159.625 110.0 L 164.625 110.0  L 159.625 150.0 L 154.625 150.0 Z " />
+  <path
+     id="path24"
+     style="fill:#3F9F2A;"
+     d="M149.625 110.0 L 154.625 110.0  L 149.625 150.0 L 144.625 150.0 Z " />
+  <g
+     id="text26"
+     style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+     aria-label="E">
+    <path
+       id="path59"
+       style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+       d="m 162.882,163.995 v 1.38 h -5.148 v -8.328 h 4.932 v 1.368 h -3.36 v 2.016 h 3.12 v 1.308 h -3.12 v 2.256 z" />
+  </g>
+  <g
+     id="text28"
+     style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+     aria-label="a">
+    <path
+       id="path62"
+       style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+       d="m 169.487,158.775 q 0.792,0 1.332,0.144 0.54,0.144 0.864,0.408 0.336,0.264 0.468,0.66 0.144,0.384 0.144,0.864 v 4.524 h -1.332 l -0.156,-0.828 q -0.24,0.42 -0.816,0.684 -0.564,0.264 -1.344,0.264 -2.22,0 -2.22,-1.956 0,-1.14 0.684,-1.596 0.684,-0.468 1.944,-0.468 h 1.74 v -0.288 q 0,-0.288 -0.06,-0.504 -0.06,-0.216 -0.228,-0.36 -0.156,-0.144 -0.444,-0.216 -0.288,-0.072 -0.732,-0.072 -0.348,0 -0.696,0.036 -0.348,0.036 -0.696,0.096 v -1.284 q 0.372,-0.06 0.78,-0.084 0.42,-0.024 0.768,-0.024 z m -0.516,5.544 q 0.684,0 1.152,-0.252 0.468,-0.252 0.672,-0.672 v -0.852 h -1.536 q -0.708,0 -1.032,0.192 -0.312,0.18 -0.312,0.756 0,0.42 0.24,0.624 0.252,0.204 0.816,0.204 z" />
+  </g>
+  <g
+     id="text30"
+     style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+     aria-label="s">
+    <path
+       id="path65"
+       style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+       d="m 177.4525,165.447 q -0.54,0 -1.08,-0.06 -0.54,-0.048 -0.924,-0.144 v -1.26 q 0.42,0.132 0.948,0.216 0.54,0.072 0.984,0.072 0.624,0 0.924,-0.156 0.3,-0.156 0.3,-0.612 0,-0.228 -0.06,-0.372 -0.048,-0.156 -0.192,-0.264 -0.144,-0.108 -0.408,-0.192 -0.252,-0.084 -0.66,-0.18 -0.528,-0.12 -0.864,-0.276 -0.336,-0.156 -0.54,-0.36 -0.192,-0.216 -0.276,-0.504 -0.072,-0.3 -0.072,-0.708 0,-0.876 0.588,-1.368 0.588,-0.504 1.908,-0.504 0.516,0 0.996,0.06 0.492,0.06 0.732,0.156 l -0.072,1.176 q -0.264,-0.096 -0.72,-0.168 -0.444,-0.072 -0.888,-0.072 -0.624,0 -0.888,0.156 -0.252,0.144 -0.252,0.552 0,0.192 0.048,0.312 0.048,0.12 0.18,0.204 0.132,0.084 0.36,0.156 0.24,0.072 0.624,0.168 0.54,0.132 0.9,0.288 0.36,0.156 0.576,0.384 0.216,0.216 0.3,0.54 0.096,0.312 0.096,0.768 0,1.092 -0.672,1.548 -0.672,0.444 -1.896,0.444 z" />
+  </g>
+  <g
+     id="text32"
+     style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+     aria-label="y">
+    <path
+       id="path68"
+       style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+       d="m 183.489,166.479 q 0.828,0 1.2,-0.288 0.384,-0.276 0.564,-0.852 l -2.556,-6.444 h 1.656 l 1.692,4.872 h 0.072 l 1.584,-4.872 h 1.584 l -2.22,6.012 q -0.288,0.78 -0.588,1.32 -0.288,0.552 -0.684,0.888 -0.396,0.348 -0.948,0.504 -0.552,0.156 -1.356,0.156 z" />
+  </g>
+  <g
+     id="text34"
+     style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+     aria-label="e">
+    <path
+       id="path71"
+       style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+       d="m 197.795,161.571 q 0,0.24 -0.024,0.468 -0.012,0.216 -0.036,0.384 l -4.248,0.276 q 0.024,0.816 0.456,1.2 0.432,0.384 1.404,0.384 0.288,0 0.588,-0.036 0.312,-0.036 0.588,-0.096 0.288,-0.072 0.528,-0.144 0.24,-0.084 0.408,-0.168 v 1.224 q -0.288,0.168 -0.936,0.3 -0.648,0.132 -1.44,0.132 -0.744,0 -1.32,-0.156 -0.576,-0.156 -0.972,-0.54 -0.396,-0.384 -0.612,-1.032 -0.204,-0.648 -0.204,-1.632 0,-0.984 0.204,-1.632 0.216,-0.648 0.612,-1.032 0.396,-0.384 0.972,-0.54 0.576,-0.156 1.32,-0.156 0.84,0 1.368,0.228 0.528,0.216 0.828,0.6 0.3,0.384 0.408,0.888 0.108,0.504 0.108,1.08 z m -1.392,-0.156 q 0,-0.3 -0.048,-0.564 -0.036,-0.276 -0.18,-0.48 -0.144,-0.204 -0.408,-0.324 -0.252,-0.12 -0.684,-0.12 -0.456,0 -0.756,0.108 -0.3,0.108 -0.48,0.324 -0.18,0.216 -0.264,0.54 -0.084,0.312 -0.096,0.732 z" />
+  </g>
+  <g
+     id="text36"
+     style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+     aria-label="x">
+    <path
+       id="path74"
+       style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+       d="m 202.864,162.063 -2.1,-3.168 h 1.74 l 1.38,2.268 h 0.072 l 1.38,-2.268 h 1.716 l -2.1,3.156 2.22,3.324 h -1.764 l -1.464,-2.388 h -0.072 l -1.5,2.388 h -1.752 z" />
+  </g>
+  <g
+     id="text38"
+     style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+     aria-label="c">
+    <path
+       id="path77"
+       style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+       d="m 212.982,165.495 q -0.744,0 -1.332,-0.156 -0.576,-0.156 -0.984,-0.54 -0.396,-0.384 -0.612,-1.032 -0.204,-0.648 -0.204,-1.632 0,-0.984 0.204,-1.632 0.216,-0.648 0.612,-1.032 0.408,-0.384 0.984,-0.54 0.588,-0.156 1.332,-0.156 0.504,0 0.936,0.06 0.444,0.06 0.744,0.156 v 1.284 q -0.348,-0.132 -0.72,-0.192 -0.372,-0.06 -0.804,-0.06 -0.468,0 -0.804,0.108 -0.324,0.096 -0.54,0.336 -0.204,0.24 -0.3,0.648 -0.096,0.408 -0.096,1.032 0,0.612 0.096,1.02 0.096,0.396 0.3,0.636 0.216,0.24 0.552,0.336 0.336,0.096 0.816,0.096 0.408,0 0.804,-0.06 0.396,-0.06 0.744,-0.192 v 1.272 q -0.144,0.048 -0.348,0.096 -0.192,0.036 -0.432,0.072 -0.228,0.036 -0.48,0.048 -0.24,0.024 -0.468,0.024 z" />
+  </g>
+  <g
+     id="text40"
+     style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+     aria-label="e">
+    <path
+       id="path80"
+       style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+       d="m 223.8575,161.571 q 0,0.24 -0.024,0.468 -0.012,0.216 -0.036,0.384 l -4.248,0.276 q 0.024,0.816 0.456,1.2 0.432,0.384 1.404,0.384 0.288,0 0.588,-0.036 0.312,-0.036 0.588,-0.096 0.288,-0.072 0.528,-0.144 0.24,-0.084 0.408,-0.168 v 1.224 q -0.288,0.168 -0.936,0.3 -0.648,0.132 -1.44,0.132 -0.744,0 -1.32,-0.156 -0.576,-0.156 -0.972,-0.54 -0.396,-0.384 -0.612,-1.032 -0.204,-0.648 -0.204,-1.632 0,-0.984 0.204,-1.632 0.216,-0.648 0.612,-1.032 0.396,-0.384 0.972,-0.54 0.576,-0.156 1.32,-0.156 0.84,0 1.368,0.228 0.528,0.216 0.828,0.6 0.3,0.384 0.408,0.888 0.108,0.504 0.108,1.08 z m -1.392,-0.156 q 0,-0.3 -0.048,-0.564 -0.036,-0.276 -0.18,-0.48 -0.144,-0.204 -0.408,-0.324 -0.252,-0.12 -0.684,-0.12 -0.456,0 -0.756,0.108 -0.3,0.108 -0.48,0.324 -0.18,0.216 -0.264,0.54 -0.084,0.312 -0.096,0.732 z" />
+  </g>
+  <g
+     id="text42"
+     style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+     aria-label="l">
+    <path
+       id="path83"
+       style="font-size:12px;font-family:'Alibaba PuHuiTi Medium';fill:#3f9f2a;fill-opacity:1"
+       d="m 229.2385,165.447 q -0.96,0 -1.356,-0.372 -0.384,-0.384 -0.384,-1.212 v -7.608 h 1.5 v 7.248 q 0,0.456 0.12,0.6 0.132,0.144 0.444,0.144 0.204,0 0.396,-0.048 v 1.176 q -0.324,0.072 -0.72,0.072 z" />
+  </g>
+</svg>

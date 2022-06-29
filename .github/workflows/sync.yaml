@@ -1,47 +1,47 @@
-# 将当前推送到 https://github.com/alibaba-easyexcel/alibaba-easyexcel.github.io
-# 保持2个文档同时更新
-# 参考： https://github.com/ad-m/github-push-action
-# 单独搞个yaml 出来 方便操作删除
-name: Sync Code
-
-# 指定 workflow 触发的 event
-# 在main分支提交的时候触发
-on:
-  push:
-    branches:
-      - main
-
-# 一个 workflow 由一个或多个 job 组成
-jobs:
-  # job id: 是 job 的唯一标识
-  sync-code:
-    # 在 Github 中显示的 job 名称
-    name: Sync Code
-    # job 运行的环境配置
-    runs-on: ubuntu-latest
-    # 一个 job 由多个 step 组成
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          # 使用 GITHUB_TOKEN
-          persist-credentials: false
-          # 不然会无法推送到远程仓库
-          fetch-depth: 0
-          # main分支
-          ref: main
-      - name: Create local changes
-        # 移除sync.yaml 防止到下一个项目还是自动会提交
-        run: |
-          git rm .github/workflows/sync.yaml
-      - name: Commit files
-        run: |
-          git config --local user.email "zhuangjiaju@qq.com"
-          git config --local user.name "Jiaju Zhuang[bot]"
-          git commit -m "自动同步文档" -a
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          repository: alibaba-easyexcel/alibaba-easyexcel.github.io
-          github_token: ${{ secrets.PUSH_DOC_TOKEN }}
-          branch: ${{ github.ref }}
-          force: true
+## 将当前推送到 https://github.com/alibaba-easyexcel/alibaba-easyexcel.github.io
+## 保持2个文档同时更新
+## 参考： https://github.com/ad-m/github-push-action
+## 单独搞个yaml 出来 方便操作删除
+#name: Sync Code
+#
+## 指定 workflow 触发的 event
+## 在main分支提交的时候触发
+#on:
+#  push:
+#    branches:
+#      - main
+#
+## 一个 workflow 由一个或多个 job 组成
+#jobs:
+#  # job id: 是 job 的唯一标识
+#  sync-code:
+#    # 在 Github 中显示的 job 名称
+#    name: Sync Code
+#    # job 运行的环境配置
+#    runs-on: ubuntu-latest
+#    # 一个 job 由多个 step 组成
+#    steps:
+#      - uses: actions/checkout@v3
+#        with:
+#          # 使用 GITHUB_TOKEN
+#          persist-credentials: false
+#          # 不然会无法推送到远程仓库
+#          fetch-depth: 0
+#          # main分支
+#          ref: main
+#      - name: Create local changes
+#        # 移除sync.yaml 防止到下一个项目还是自动会提交
+#        run: |
+#          git rm .github/workflows/sync.yaml
+#      - name: Commit files
+#        run: |
+#          git config --local user.email "zhuangjiaju@qq.com"
+#          git config --local user.name "Jiaju Zhuang[bot]"
+#          git commit -m "自动同步文档" -a
+#      - name: Push changes
+#        uses: ad-m/github-push-action@master
+#        with:
+#          repository: alibaba-easyexcel/alibaba-easyexcel.github.io
+#          github_token: ${{ secrets.PUSH_DOC_TOKEN }}
+#          branch: ${{ github.ref }}
+#          force: true

@@ -205,8 +205,9 @@ const config = {
                     src: 'img/opensource_logo.png',
                     href: 'https://opensource.alibaba.com',
                 },
+
                 // Please do not remove the credits, help to publicize Docusaurus :)
-                copyright: `Copyright © ${new Date().getFullYear()} Alibaba, Inc. Built with Docusaurus.`,
+                copyright: `Copyright © ${new Date().getFullYear()} Alibaba, Inc. Built with Docusaurus. 备案号：浙B2-20120091-4`,
             },
         }),
 

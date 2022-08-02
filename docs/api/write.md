@@ -24,7 +24,7 @@ sidebar_position: 2
 
 ### `ExcelIgnoreUnannotated`
 
-默认不加`ExcelProperty` 的注解的都会参与读写，加了不会参与
+默认不管加不加`ExcelProperty`的注解的所有字段都会参与读写，加了`ExcelIgnoreUnannotated`注解以后，不加`ExcelProperty`注解的字段就不会参与
 
 ### `DateTimeFormat`
 

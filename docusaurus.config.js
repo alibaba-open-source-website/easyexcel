@@ -91,7 +91,7 @@ const config = {
                             tagName: 'meta',
                             attributes: {
                                 name: 'aes-config',
-                                content: 'pid=xux-opensource&user_type=101&uid=&username=',
+                                content: 'pid=xux-opensource&user_type=101&uid=&username=&dim10=easyexcel',
                             },
                         },
                     ],

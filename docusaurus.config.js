@@ -211,15 +211,6 @@ const config = {
             },
         }),
 
-    // 没错 这个就是广告 留下了没有赚钱本领的泪水
-    scripts: [
-        {
-            src: 'https://cdn.wwads.cn/js/makemoney.js',
-            charset : 'UTF-8',
-            async: true,
-        },
-    ],
-
 
     // 国际化
     // 这里设置默认为中文 ，不设置的话默认为英文，可能部分展示出来是英文

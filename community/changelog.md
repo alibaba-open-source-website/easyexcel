@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # 3.1.3
 
-* 提供xlsx兼容性：兼容`sharedStrings.xml` 存储在 `x:t`标签
+* 提高xlsx兼容性：兼容`sharedStrings.xml` 存在 `x:t`标签的情况
 
 # 3.1.2
 

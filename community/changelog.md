@@ -3,6 +3,14 @@ title: 更新日志
 sidebar_position: 4
 ---
 
+# 3.1.3
+
+* 提供xlsx兼容性：兼容`sharedStrings.xml` 存储在 `x:t`标签
+
+# 3.1.2
+
+* 修复长时间运行会产生大对象的bug [Issue #2725](https://github.com/alibaba/easyexcel/issues/2725)
+
 ## 3.1.1
 
 * 修复部分xlsx无法读取超链接的bug

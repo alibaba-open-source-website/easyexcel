@@ -169,7 +169,6 @@ public class FillData {
             // 如果数据量大 list不是最后一行 参照下一个
             FillConfig fillConfig = FillConfig.builder().forceNewRow(Boolean.TRUE).build();
             excelWriter.fill(data(), fillConfig, writeSheet);
-            excelWriter.fill(data(), fillConfig, writeSheet);
             Map<String, Object> map = MapUtils.newHashMap();
             map.put("date", "2019年10月9日13:28:28");
             map.put("total", 1000);

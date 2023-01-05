@@ -94,6 +94,13 @@ const config = {
                                 content: 'pid=xux-opensource&user_type=101&uid=&username=&dim10=easyexcel',
                             },
                         },
+                        // 接入研发小蜜
+                        {
+                            tagName: 'script',
+                            attributes: {
+                                src: '//linkspub.alipay.com/widgetInit/63b698507592880633dc5290'
+                            },
+                        },
                     ],
                     preBodyTags: [
                         {

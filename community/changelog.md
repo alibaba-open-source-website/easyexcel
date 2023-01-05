@@ -3,6 +3,14 @@ title: 更新日志
 sidebar_position: 4
 ---
 
+# 3.1.5
+
+* 提高xlsx读取兼容性：兼用ns2开头的标签
+
+# 3.1.4
+
+* 提高xlsx读取兼容性：在存在第一行很多空列的情况下，忽略空列
+
 # 3.1.3
 
 * 提高xlsx兼容性：兼容`sharedStrings.xml` 存在 `x:t`标签的情况

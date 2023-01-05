@@ -149,7 +149,7 @@ const config = {
             // 最上面的广告位  https://docusaurus.io/docs/api/themes/configuration#announcement-bar
             announcementBar: {
                 id: 'announcementBar-2',
-                content: '⭐ 开源不易，如果觉得本项目对您的工作还是有帮助的话， 请帮忙在<a target="_blank" rel="noopener noreferrer" href="https://github.com/alibaba/easyexcel">GitHub</a> 点个⭐️',
+                content: '⭐ 开源不易，如果觉得本项目对您的工作还是有帮助的话， 请帮忙在<a target="_blank" rel="noopener noreferrer" href="https://github.com/alibaba/easyexcel">GitHub</a> 点个⭐️Star',
             },
             // 接入algolia搜索引擎
             algolia: {

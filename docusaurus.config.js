@@ -98,7 +98,8 @@ const config = {
                         {
                             tagName: 'script',
                             attributes: {
-                                src: '//linkspub.alipay.com/widgetInit/63b698507592880633dc5290'
+                                src: '//linkspub.alipay.com/widgetInit/63b698507592880633dc5290',
+                                async: true
                             },
                         },
                     ],

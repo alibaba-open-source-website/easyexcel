@@ -24,6 +24,6 @@ sidebar_position: 1
 ## 在`github`提交`issue`
 可以在[https://github.com/alibaba/easyexcel/issues](https://github.com/alibaba/easyexcel/issues)先搜索下，如果搜索不到可以直接创建`issue`
 ## 人工在线帮助
-当前网站（官网）右下角有个`?`，在尝试过文档无法自助解决的情况下，可以寻求人工在线帮助
+当前网站（官网）右下角有个`?`，在尝试过文档无法自助解决的情况下，可以点击人工支持
 # 开源不易，如果觉得EasyExcel对您的工作还是有帮助的话，请帮忙在<a target="_blank" rel="noopener noreferrer" href="https://github.com/alibaba/easyexcel">GitHub</a> 点个⭐Star，您的支持是使EasyExcel变得更好最大的动力
 

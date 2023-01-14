@@ -30,7 +30,7 @@ sidebar_position: 1
 
 图片的绿色小字就是最新版本：
 [![Maven central](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel)   
-如果看不到图片则直接打开：[https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel)
+如果看不到图片则直接打开：[https://mvnrepository.com/artifact/com.alibaba/easyexcel](https://mvnrepository.com/artifact/com.alibaba/easyexcel)
 
 ### 写excel的情况下填充和写怎么选择？
 

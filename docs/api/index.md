@@ -96,6 +96,7 @@ sidebar_position: 1
 | xlsxSAXParserFactoryName           | 空                                                       | 指定sax读取使用的class的名称，例如：`com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl`                                                                                                                                                        |
 | useDefaultListener           | true                                                    | `@since 2.1.4` 默认会加入`ModelBuildEventListener` 来帮忙转换成传入`class`的对象，设置成`false`后将不会协助转换对象，自定义的监听器会接收到`Map<Integer,CellData>`对象，如果还想继续接听到`class`对象，请调用`readListener`方法，加入自定义的`beforeListener`、 `ModelBuildEventListener`、 自定义的`afterListener`即可。 |
 | extraReadSet           | 空                                                       | 额外需要读取内容的set，默认不读取这些数据                                                                                                                                                                                                                      |
+| readDefaultReturn           | STRING                                                       | `@since 3.2.0`。STRING:会返回一个Map<Integer,String>的数组，ACTUAL_DATA：会返回一个Map<Integer,Object>的数组，Object类型为`BigDecimal`、`Boolean`、`String`、`String`、null，中的一个，READ_CELL_DATA: 会返回一个Map<Integer,ReadCellData<?>>的数组,其中`?`类型参照ACTUAL_DATA的            |
 
 ### ReadSheet
 

@@ -2,6 +2,11 @@
 title: 更新日志
 sidebar_position: 4
 ---
+# 3.2.0
+
+* 修复部分xlsx读取日期可能相差1秒的bug [Issue #1956](https://github.com/alibaba/easyexcel/issues/1956)
+* 修复部分数据精度和excel不匹配的bug [Issue #2805](https://github.com/alibaba/easyexcel/issues/2805)
+* 不创建对象的读支持读取原始的数据类型
 
 # 3.1.5
 

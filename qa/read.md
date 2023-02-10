@@ -142,6 +142,6 @@ EasyExcel.read().readCacheSelector(simpleReadCacheSelector);
 
 * maxCacheActivateBatchCount 也就是前面第二个参数的详细说明      
   easyexcel在使用文件存储的时候，会把共享字符串拆分成100条一批，然后放到文件存储。然后excel来读取共享字符串大概率是按照顺序的，所以默认20批的100条的数据放在内存，命中后直接返回，没命中去读文件。所以不能设置太小，太小了，很难命中，一直去读取文件，太大了的话会占用过多的内存。
-* 如何判断 maxCacheActivateSize是否需要调整   
+* 如何判断 maxCacheActivateBatchCount是否需要调整   
   开启debug日志会输出`Already put :4000000` 最后一次输出，大概可以得出值为400W,然后看`Cache misses count:4001`得到值为4K，400W/4K=1000
   这代表已经`maxCacheActivateBatchCount` 已经非常合理了。如果小于500 问题就非常大了，500到1000 应该都还行。

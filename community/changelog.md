@@ -2,6 +2,14 @@
 title: 更新日志
 sidebar_position: 4
 ---
+
+# 3.2.1
+
+* 兼容`LocalDate` [Issue #2908](https://github.com/alibaba/easyexcel/issues/2908)
+* 优化大文件内存存储，减少内存占用 [Issue #2657](https://github.com/alibaba/easyexcel/issues/2657)
+* 在临时文件被删除的情况下能正常的读取 [Issue #2693](https://github.com/alibaba/easyexcel/issues/2693)
+* 分页读取监听器支持自定义分页条数 [Issue #2383](https://github.com/alibaba/easyexcel/issues/2383)
+
 # 3.2.0
 
 * 修复部分xlsx读取日期可能相差1秒的bug [Issue #1956](https://github.com/alibaba/easyexcel/issues/1956)

@@ -3,7 +3,7 @@ title: 关于easyexcel
 sidebar_position: 1
 ---
 # 🔥作者最新开源项目[Chat2DB](https://github.com/alibaba/Chat2DB)
-Chat2DB是一个集成了ChatGPT 可以AI自动生成SQL的智能数据库客户端， GitHub地址 [https://github.com/alibaba/Chat2DB](https://github.com/alibaba/Chat2DB)
+[Chat2DB](https://github.com/alibaba/Chat2DB) 是一个集成了ChatGPT 可以AI自动生成SQL的智能数据库客户端， GitHub地址 [https://github.com/alibaba/Chat2DB](https://github.com/alibaba/Chat2DB)
 
 # EasyExcel
 EasyExcel是一个基于Java的简单、省内存的读写Excel的开源项目。在尽可能节约内存的情况下支持读写百M的Excel。

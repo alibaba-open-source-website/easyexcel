@@ -3,6 +3,10 @@ title: 更新日志
 sidebar_position: 4
 ---
 
+# 3.3.1
+
+* 修改版本发布问题
+
 # 3.3.0
 
 * 读csv会忽略BOM数据 [Issue #3137](https://github.com/alibaba/easyexcel/issues/3137)

@@ -3,7 +3,7 @@ title: 加群讨论
 sidebar_position: 1
 ---
 ## 钉钉群
-比较推荐钉钉群，`QQ` 公司不让用，当然QQ群也会有热心网友帮忙解决。
+比较推荐钉钉群，`QQ` 公司不让用，当然QQ群也会有热心网友帮忙解决。   
 [钉钉1群（已满）: 21960511](https://qr.dingtalk.com/action/joingroup?code=v1,k1,cchz6k12ci9B08NNqhNRFGXocNVHrZtW0kaOtTKg/Rk=&_dt_no_comment=1&origin=11)  
 [钉钉2群（已满）: 32796397](https://qr.dingtalk.com/action/joingroup?code=v1,k1,jyU9GtEuNU5S0QTyklqYcYJ8qDZtUuTPMM7uPZTS8Hs=&_dt_no_comment=1&origin=11)  
 [钉钉3群（已满）: 33797247](https://qr.dingtalk.com/action/joingroup?code=v1,k1,3UGlEScTGQaHpW2cIRo+gkxJ9EVZ5fz26M6nW3uFP30=&_dt_no_comment=1&origin=11)  

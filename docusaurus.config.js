@@ -81,15 +81,6 @@ const config = {
                 sidebarPath: require.resolve('./sidebarsQa.js'),
             },
         ],
-        [
-            '@docusaurus/plugin-content-docs',
-            {
-                id: 'group',
-                path: 'group',
-                routeBasePath: 'group',
-                sidebarPath: require.resolve('./sidebarsGroup.js'),
-            },
-        ],
         // 接入开源官网的流量统计
         [
             'docusaurus-plugin-includes',

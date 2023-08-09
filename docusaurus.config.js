@@ -195,6 +195,11 @@ const config = {
                         dropdownActiveClassDisabled: true
                     },
                     {
+                        href: 'https://github.com/chat2db/Chat2DB',
+                        label: 'Chat2DB',
+                        position: 'right',
+                    },
+                    {
                         href: 'https://github.com/alibaba/easyexcel',
                         label: 'GitHub',
                         position: 'right',

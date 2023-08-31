@@ -4,7 +4,10 @@ sidebar_position: 1
 description: EasyExcel是一个基于Java的简单、省内存的读写Excel的开源项目，在尽可能节约内存的情况下支持读写百M的Excel。
 ---
 # 🔥作者最新开源项目[Chat2DB](https://github.com/chat2db/Chat2DB)
-[Chat2DB](https://github.com/chat2db/Chat2DB) 是一个集成了ChatGPT 可以AI自动生成SQL的智能数据库客户端， GitHub地址 [https://github.com/chat2db/Chat2DB](https://github.com/chat2db/Chat2DB)
+- GitHub地址 [https://github.com/chat2db/Chat2DB](https://github.com/chat2db/Chat2DB)
+- 官 网 地 址 [https://chat2db.ai](https://chat2db.ai)
+
+<a href= "https://github.com/chat2db/Chat2DB" ><img width="1720" alt="crete datasource" src="https://sqlgpt.cn/img/demo.png"></img></a>
 
 # EasyExcel
 Java解析、生成Excel比较有名的框架有Apache poi、jxl。但他们都存在一个严重的问题就是非常的耗内存，poi有一套SAX模式的API可以一定程度的解决一些内存溢出的问题，但POI还是有一些缺陷，比如07版Excel解压缩以及解压后存储都是在内存中完成的，内存消耗依然很大。  

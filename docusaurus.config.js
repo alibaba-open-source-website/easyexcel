@@ -81,15 +81,6 @@ const config = {
                 sidebarPath: require.resolve('./sidebarsQa.js'),
             },
         ],
-        [
-            '@docusaurus/plugin-content-docs',
-            {
-                id: 'group',
-                path: 'group',
-                routeBasePath: 'group',
-                sidebarPath: require.resolve('./sidebarsGroup.js'),
-            },
-        ],
         // 接入开源官网的流量统计
         [
             'docusaurus-plugin-includes',
@@ -202,6 +193,11 @@ const config = {
                         type: 'docsVersionDropdown',
                         position: 'right',
                         dropdownActiveClassDisabled: true
+                    },
+                    {
+                        href: 'https://github.com/chat2db/Chat2DB',
+                        label: 'Chat2DB',
+                        position: 'right',
                     },
                     {
                         href: 'https://github.com/alibaba/easyexcel',

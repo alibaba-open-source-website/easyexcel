@@ -80,7 +80,7 @@ export default function Home() {
             <div>
               <Link to={'https://www.sqlgpt.cn'} className={styles.chat2dbBtn}>
                 🥳 Chat2DB 🥳
-                <div style={{fontSize: "18px"}}>一个AI智能的数据库管理工具</div>
+                <div style={{fontSize: '18px'}}>一个AI智能的数据库管理工具</div>
               </Link>
             </div>
           </p>

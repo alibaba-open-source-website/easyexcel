@@ -53,7 +53,7 @@ easyexcel重写了poi对07版Excel的解析，一个3M的excel用POI sax解析�
 
 ## 联系方式
 
-直接加钉钉群，联系是仪即可
+直接加钉钉群，联系事宜即可
 
 ### 如何获取帮助
 [如何获取帮助](/community/support)

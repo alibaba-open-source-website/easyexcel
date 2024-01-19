@@ -42,14 +42,3 @@
   height: 200px;
   width: 200px;
 }
-
-
-.chat2dbBtn{
-  margin-bottom: 20px; 
-  font-size: 3em;
-  color: white;
-  font-weight: 500;
-  &:hover{
-    color: rgb(255, 255, 255) !important;
-  }
-}

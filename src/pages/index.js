@@ -76,15 +76,6 @@ export default function Home() {
             <span>
               他能让你在不用考虑性能、内存的等因素的情况下，快速完成Excel的读、写等功能。
             </span>
-
-            <div>
-              <Link to={'https://www.sqlgpt.cn'} className={styles.chat2dbBtn}>
-                <div style={{color: '#FFF'}}>🥳 Chat2DB 🥳</div>
-                <div style={{fontSize: '18px', color: '#FFF'}}>
-                  一个AI智能的数据库管理工具
-                </div>
-              </Link>
-            </div>
           </p>
 
           <div className={styles.buttons}>

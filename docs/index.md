@@ -12,8 +12,8 @@ easyexcel重写了poi对07版Excel的解析，一个3M的excel用POI sax解析�
   * EasyExcel作者协助简历优化
   * 更多岗位前置知识
 * 内推岗位
-  * 🔥可在 [淘天猫岗位搜索](https://talent.taotian.com/off-campus/position-list?lang=zh&search=) 搜索岗位
-  * [非淘宝、天猫岗位搜索](https://talent.alibaba.com/) 首页往下拉可以看到各个集团
+  * 🔥可在 [淘天集团岗位搜索](https://talent.taotian.com/off-campus/position-list?lang=zh&search=) 搜索岗位
+  * [非淘天集团岗位搜索](https://talent.alibaba.com/) 首页往下拉可以看到各个集团
 * 内推
   * 发送简历到 zhuangjiaju.zjj@taobao.com 
   * 或者 [联系我们](https://easyexcel.opensource.alibaba.com/community/support) 加入钉钉群联系群主

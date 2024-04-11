@@ -183,7 +183,7 @@ const config = {
                         docsPluginId: 'qa',
                     },
                     {
-                        label: '社区',
+                        label: '联系我们',
                         type: 'doc',
                         docId: 'support',
                         position: 'right',

@@ -36,7 +36,7 @@ AI 驱动的数据库管理、数据分析工具，支持Mysql、pg、oracle、s
 [如何获取帮助](/community/support)
 
 ## 维护者
-姬朋飞（玉霄)、庄家钜、怀宇
+姬朋飞（玉霄)、庄家钜
 ## 快速开始
 ### 读Excel
 DEMO代码地址：[https://github.com/alibaba/easyexcel/blob/master/easyexcel-test/src/test/java/com/alibaba/easyexcel/test/demo/read/ReadTest.java](https://github.com/alibaba/easyexcel/blob/master/easyexcel-test/src/test/java/com/alibaba/easyexcel/test/demo/read/ReadTest.java)

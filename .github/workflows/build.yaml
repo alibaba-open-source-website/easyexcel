@@ -22,13 +22,13 @@ jobs:
       - name: Checkout
         # checkout action 主要用于向 github 仓库拉取源代码
         # https://github.com/actions/checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@main
         with:
           ref: main
       - name: Cache
         # cache 在这里主要用于缓存 npm，提升构建速率
         # https://github.com/actions/cache
-        uses: actions/cache@v3
+        uses: actions/cache@main
         # npm 缓存的路径可查看 https://docs.npmjs.com/cli/cache#cache
         # 由于这里 runs-on 是 ubuntu-latest，因此配置 ~/.npm
         with:
@@ -39,9 +39,9 @@ jobs:
       - name: Use Node.js
         # 配置 Node 执行环境（当前构建的服务器默认没有 Node 环境，可以通过 Action 安装 Node）
         # https://github.com/actions/setup-node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@main
         with:
-          node-version: 16
+          node-version: 20
       - name: Build
         # 安装 Node 之后就可以执行构建脚本
         run: |
@@ -51,7 +51,7 @@ jobs:
       - name: Deploy
         # 将构建产物 commit 到一个分支上，用于发布静态站点资源
         # https://github.com/peaceiris/actions-gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@main
         with:
           # Github 会在 workflow 中自动生成 GIHUBT_TOKEN，用于认证 workflow 的运行
           github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -3,6 +3,11 @@ title: 更新日志
 sidebar_position: 4
 ---
 
+# 4.0.1
+
+* `commons-io` 修改为依赖 `poi`的版本
+* 修复临时目录被清理可能提示`NoSuchFileException`的异常
+
 # 4.0.0
 
 * `poi`由`4.1.2`升级到`5.2.5`

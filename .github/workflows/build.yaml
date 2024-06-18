@@ -51,7 +51,7 @@ jobs:
       - name: Deploy
         # 将构建产物 commit 到一个分支上，用于发布静态站点资源
         # https://github.com/peaceiris/actions-gh-pages
-        uses: peaceiris/actions-gh-pages@main
+        uses: peaceiris/actions-gh-pages@v4
         with:
           # Github 会在 workflow 中自动生成 GIHUBT_TOKEN，用于认证 workflow 的运行
           github_token: ${{ secrets.GITHUB_TOKEN }}

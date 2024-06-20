@@ -11,7 +11,7 @@
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: 'Easy Excel',
+    title: 'Easy Excel 官网',
     tagline: 'EasyExcel是一个基于Java的、快速、简洁、解决大文件内存溢出的Excel处理工具。他能让你在不用考虑性能、内存的等因素的情况下，快速完成Excel的读、写等功能。',
     url: 'https://easyexcel.opensource.alibaba.com',
     baseUrl: '/',
@@ -20,7 +20,15 @@ const config = {
     favicon: 'img/favicon.ico',
     organizationName: 'alibaba', // Usually your GitHub org/user name.
     projectName: 'easyexcel', // Usually your repo name.
-
+    scripts: [
+        {
+          src: '/javascript/baidu-analytics.js',
+        },
+        {
+          src: '/javascript/copilot-sidebar.js',
+        },
+        
+      ],
 
     presets: [
         [
@@ -79,6 +87,16 @@ const config = {
                 path: 'qa',
                 routeBasePath: 'qa',
                 sidebarPath: require.resolve('./sidebarsQa.js'),
+            },
+        ],
+        [
+            // 常见问题
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'expert',
+                path: 'expert',
+                routeBasePath: 'expert',
+                sidebarPath: require.resolve('./sidebarsExpert.js'),
             },
         ],
         // 接入开源官网的流量统计
@@ -188,6 +206,13 @@ const config = {
                         docId: 'support',
                         position: 'right',
                         docsPluginId: 'community',
+                    },
+                    {
+                        label: '专家答疑',
+                        type: 'doc',
+                        docId: 'intro',
+                        position: 'right',
+                        docsPluginId: 'expert',
                     },
                     {
                         type: 'docsVersionDropdown',

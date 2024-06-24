@@ -21,24 +21,21 @@ sidebar_position: 1
 
 ## 已接入产品（点对应的链接可以让机器人只回答对应产品的问题）：
 
-[全品类专家答疑](https://answer.opensource.alibaba.com)
+[Nacos专家答疑](https://nacos.io) 垂直网站接入，点击即可咨询问题
 
-[Nacos专家答疑](https://nacos.io)
+[spring-cloud-alibaba专家答疑](https://sca.aliyun.com) 垂直网站接入，点击即可咨询问题
 
-[spring-cloud-alibaba专家答疑](https://sca.aliyun.com)
+[Arthas](https://answer.opensource.alibaba.com) 已接入全品类专家答疑，直接问问题即可
 
-Arthas 已接入全品类专家答疑，直接问问题即可
+[EasyExcel专家答疑](https://answer.opensource.alibaba.com) 已接入全品类专家答疑，直接问问题即可
 
-[EasyExcel专家答疑](https://easyexcel.opensource.alibaba.com) 已接入，直接问问题即可
+[Apache Dubbo](https://answer.opensource.alibaba.com) 已接入全品类专家答疑，直接问问题即可
 
-Apache Dubbo 已接入全品类专家答疑，直接问问题即可
+[Sentinel](https://answer.opensource.alibaba.com) 已接入全品类专家答疑，直接问问题即可
 
-Sentinel 已接入全品类专家答疑，直接问问题即可
+[Seata](https://answer.opensource.alibaba.com) 已接入全品类专家答疑，直接问问题即可
 
-Seata 已接入全品类专家答疑，直接问问题即可
-
-canal 已接入全品类专家答疑，直接问问题即可
-
+[Canal](https://answer.opensource.alibaba.com) 已接入全品类专家答疑，直接问问题即可
 
 * 如需要其他产品接入，也可以直接通过 专家答疑 问我们，我们会尽快接入。
 

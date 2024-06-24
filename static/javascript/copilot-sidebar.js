@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
   copilotJSScript.addEventListener('load', function (){
       if(window.CNPilot){
           window.CNPilot.mounted({
-            CNPilot_OPEN_SOURCE: ['easyexcelopensource.alibaba-inc.com','easyexcel.ali-open-source.alibaba-inc.com'], // 需要展示的开源网站
+            CNPilot_OPEN_SOURCE: ['ali-open-source.alibaba-inc.com','opensource.alibaba.com','easyexcelopensource.alibaba-inc.com','easyexcel.ali-open-source.alibaba-inc.com'], // 需要展示的开源网站
             CNPilot_OPEN_SOURCE_API: 'https://ai.nacos.io', // 需要使用的后端地址
-            CNPilot_OPEN_SOURCE_PRODUCT_NAME: "opensource",
+            CNPilot_OPEN_SOURCE_PRODUCT_NAME: "easyexcel",
             //CNPilot_OPEN_SOURCE_API: 'http://localhost:9000',
             showFloatICON: true,                                 // 展示 icon 浮窗
             globalStyle:{                                         // 弹窗外层样式（react style 写法）

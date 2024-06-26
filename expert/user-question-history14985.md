@@ -1,37 +1,68 @@
 ---
 id: "question-history-14985"
-title: "EasyExcel 是否支持公式计算？ easyExcel"
-date: "2024-06-20"
+title: "EasyExcel 是否支持公式计算？"
+date: "2024-06-26"
 category: "expertConsultation"
-description: "EasyExcel 本身并不直接支持公式计算。但是，根据提供的知识内容，可以采取一种间接方法来实现公式计算。这里是如何操作的：### 分析问题原因用户希望了解 EasyExcel 是否能处理Excel中的公式计算。直接使用EasyExcel时，它主要用于读写数据，并不包括公式计算的功能。### 解决"
+description: "EasyExcel 本身并不直接支持公式计算。但是，通过结合 Apache POI 的 `FormulaEvaluator`，你可以实现对含有公式的Excel文件进行读取、计算及写回的操作。具体步骤如下：1. **读取Excel文件**：首先使用EasyExcel的读取功能加载Excel文件的数据。"
 ---
 
 ## 用户问题 ： 
- EasyExcel 是否支持公式计算？ easyExcel 
+ EasyExcel 是否支持公式计算？  
 
 ---------------
 ## 专家官方解答 ：
 
-EasyExcel 本身并不直接支持公式计算。但是，根据提供的知识内容，可以采取一种间接方法来实现公式计算。这里是如何操作的：
+EasyExcel 本身并不直接支持公式计算。但是，通过结合 Apache POI 的 `FormulaEvaluator`，你可以实现对含有公式的Excel文件进行读取、计算及写回的操作。具体步骤如下：
 
-### 分析问题原因
-用户希望了解 EasyExcel 是否能处理Excel中的公式计算。直接使用EasyExcel时，它主要用于读写数据，并不包括公式计算的功能。
+1. **读取Excel文件**：首先使用EasyExcel的读取功能加载Excel文件的数据。
+   
+2. **使用Apache POI计算公式**：接着，利用Apache POI打开同一个文件，并创建一个`FormulaEvaluator`实例来遍历工作簿中的所有公式单元格进行计算。
 
-### 解决方案步骤
-1. **读取Excel文件**：首先，利用`EasyExcel.read()`方法读取Excel文件中的数据。这一步骤会获取到文件中的原始数据，但不会自动计算公式。
+3. **写回计算结果**：最后，使用EasyExcel将计算后的数据（包括已计算的公式结果）写回到原Excel文件或新的文件中。
 
-2. **利用Apache POI计算公式**：由于EasyExcel没有内置公式计算能力，可以结合Apache POI库来完成这一需求。通过创建`Workbook`实例并使用`FormulaEvaluator`，可以遍历工作簿中的每一个单元格，对公式类型（`CellType.FORMULA`）的单元格进行计算。
+这是一个示例代码段，展示了如何结合EasyExcel和Apache POI完成这一过程：
+```java
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.read.metadata.ReadSheet;
+import com.alibaba.excel.write.ExcelWriter;
+import com.alibaba.excel.write.metadata.WriteSheet;
+import org.apache.poi.ss.usermodel.*;
 
-3. **重新写入计算结果**：计算完所有公式后，使用EasyExcel的写入功能，配合模板（如果需要保持原格式），将计算后的数据写回原Excel文件或新文件中。这样，写入的数据就包含了公式计算的结果。
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
-### 解释
-这种方法实际上是绕过了EasyExcel直接计算公式的限制，通过先读取数据、外部计算公式、再写回数据的过程，实现了对Excel公式的支持。需要注意的是，在处理大量数据或复杂公式时，这种方法可能会增加程序的执行时间和资源消耗。同时，务必确保在计算公式前，Excel文件中的所有依赖数据已被正确读取和处理，以避免计算错误或异常。
+public class EasyExcelWithFormulaEvaluator {
+    public static void main(String[] args) throws IOException {
+        String fileName = "your_excel_file_path";
 
-综上所述，虽然EasyExcel本身不支持公式计算，但通过结合Apache POI的`FormulaEvaluator`，可以实现对Excel公式的有效处理。
+        // 读取Excel文件
+        List<Object> data = EasyExcel.read(fileName).sheet().doReadSync();
 
-### 注意事项
-- 确保处理潜在的公式计算异常，比如因缺失引用数据导致的计算失败。
-- 上述示例代码提供了一个基本框架，具体实现时可能需要根据实际Excel结构和需求调整。
+        // 使用Apache POI计算公式
+        Workbook workbook = WorkbookFactory.create(new File(fileName));
+        FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
+        for (Sheet sheet : workbook) {
+            for (Row row : sheet) {
+                for (Cell cell : row) {
+                    if (cell.getCellType() == CellType.FORMULA) {
+                        evaluator.evaluateFormulaCell(cell);
+                    }
+                }
+            }
+        }
+
+        // 写回计算结果
+        ExcelWriter excelWriter = EasyExcel.write(fileName).withTemplate(fileName).build();
+        WriteSheet writeSheet = EasyExcel.writerSheet().build();
+        excelWriter.fill(data, writeSheet);
+        excelWriter.finish();
+    }
+}
+```
+请注意，如果Excel文件非常大，直接在内存中操作可能会导致内存溢出。对于大文件，官方建议是在Java层面预先计算好数据，直接写入Excel，避免使用公式。
+
+此过程解释了如何绕过EasyExcel的限制，实现对含有公式的Excel文件的处理，确保公式能够被正确计算。
 
 
 <font color="#949494">---------------</font> 
@@ -40,6 +71,8 @@ EasyExcel 本身并不直接支持公式计算。但是，根据提供的知识�
 ## 参考链接 ：
 
 *专家经验：easyexcel 结合 FormulaEvaluator 
+ 
+ *专家经验：easyexcel模板填充后，有公式的单元格不会自动计算，而需要我手动算，如何处理？ 
 
 
  <font color="#949494">---------------</font> 
@@ -51,4 +84,4 @@ EasyExcel 本身并不直接支持公式计算。但是，根据提供的知识�
 本内容经由技术专家审阅的用户问答的镜像生成，我们提供了<font color="#FF0000">专家智能答疑服务</font>，在<font color="#FF0000">页面的右下的浮窗”专家答疑“</font>。您也可以访问 : [全局专家答疑](https://answer.opensource.alibaba.com/docs/intro) 。 咨询其他产品的的问题
 
 ### 反馈
-如问答有错漏，欢迎点：[差评](https://ai.nacos.io/user/feedbackByEnhancerGradePOJOID?enhancerGradePOJOId=15778)给我们反馈。
+如问答有错漏，欢迎点：[差评](https://ai.nacos.io/user/feedbackByEnhancerGradePOJOID?enhancerGradePOJOId=15910)给我们反馈。

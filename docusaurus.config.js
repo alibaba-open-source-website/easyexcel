@@ -11,7 +11,7 @@
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: 'Easy Excel',
+    title: 'Easy Excel 官网',
     tagline: 'EasyExcel是一个基于Java的、快速、简洁、解决大文件内存溢出的Excel处理工具。他能让你在不用考虑性能、内存的等因素的情况下，快速完成Excel的读、写等功能。',
     url: 'https://easyexcel.opensource.alibaba.com',
     baseUrl: '/',
@@ -20,7 +20,15 @@ const config = {
     favicon: 'img/favicon.ico',
     organizationName: 'alibaba', // Usually your GitHub org/user name.
     projectName: 'easyexcel', // Usually your repo name.
-
+    scripts: [
+        {
+          src: '/javascript/baidu-analytics.js',
+        },
+        {
+          src: '/javascript/copilot-sidebar.js',
+        },
+        
+      ],
 
     presets: [
         [
@@ -34,7 +42,7 @@ const config = {
                     lastVersion: 'current',
                     versions: {
                         "current": {
-                            label: "3.1.x-3.3.x",
+                            label: "3.1.x-4.x.x",
                             path: "current",
                         },
                         "3.0.x": {
@@ -79,6 +87,16 @@ const config = {
                 path: 'qa',
                 routeBasePath: 'qa',
                 sidebarPath: require.resolve('./sidebarsQa.js'),
+            },
+        ],
+        [
+            // 常见问题
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'expert',
+                path: 'expert',
+                routeBasePath: 'expert',
+                sidebarPath: require.resolve('./sidebarsExpert.js'),
             },
         ],
         // 接入开源官网的流量统计
@@ -126,8 +144,8 @@ const config = {
                 additionalLanguages: ['java'],
                 // 可以配置不同的代码块样式 参考：https://docusaurus.io/docs/markdown-features/code-blocks#supported-languages
                 // 可选项：https://github.com/FormidableLabs/prism-react-renderer/tree/master/src/themes
-                theme: require('prism-react-renderer/themes/github'),
-                darkTheme: require('prism-react-renderer/themes/oceanicNext'),
+                theme: require('prism-react-renderer').themes.github,
+                darkTheme: require('prism-react-renderer').themes.oceanicNext,
             },
             // 这里设置关键字 和描述 ，方便给搜索引擎收录 https://docusaurus.io/docs/seo#global-metadata
             metadata: [
@@ -188,6 +206,13 @@ const config = {
                         docId: 'support',
                         position: 'right',
                         docsPluginId: 'community',
+                    },
+                    {
+                        label: '专家答疑',
+                        type: 'doc',
+                        docId: 'intro',
+                        position: 'right',
+                        docsPluginId: 'expert',
                     },
                     {
                         type: 'docsVersionDropdown',

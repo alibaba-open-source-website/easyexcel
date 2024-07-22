@@ -2,6 +2,28 @@
 title: 更新日志
 sidebar_position: 4
 ---
+
+# 4.0.1
+
+* `commons-io` 修改为依赖 `poi`的版本
+* 修复临时目录被清理可能提示`NoSuchFileException`的异常
+
+# 4.0.0
+
+* `poi`由`4.1.2`升级到`5.2.5`
+* `commons-csv`由`1.1.0`升级到`1.10.0`
+* `slf4j-api`由`1.7.32`升级到`1.7.36`
+* `ehcache`由`3.9.9`升级到`3.9.11`
+* 支持`jdk21`
+
+# 3.3.4
+
+* 支持停止单个`sheet`以后继续读取其他`sheet`,使用`ExcelAnalysisStopSheetException`
+
+# 3.3.3
+
+* 兼容某些特殊的xls: 缺少每个sheet的终止符
+
 # 3.3.2
 
 * 修复`includeColumnIndexes`和`includeColumnFieldNames`在sheet后面失效的问题
@@ -17,9 +39,12 @@ sidebar_position: 4
 * xlsx存在隐藏字符时需要忽略，确保和展示看到的一样
 * 新增`commons-io` 2.11.0 包
 * 在`easyexcel-parent` 包中移除测试包的`dependencyManagement`
-* 删除`org.apache.poi.hssf.usermodel.PoiUtils.java`,使用反射获取 [Issue #2804](https://github.com/alibaba/easyexcel/issues/2804)
-* 默认对象反射缓存改成`ThreadLocal`,并支持设置反射缓存类型 [Issue #2792](https://github.com/alibaba/easyexcel/issues/2792)
-* 支持根据`includeColumnIndexes`和`includeColumnFieldNames`排序 [Issue #2697](https://github.com/alibaba/easyexcel/issues/2697)
+* 删除`org.apache.poi.hssf.usermodel.PoiUtils.java`
+  ,使用反射获取 [Issue #2804](https://github.com/alibaba/easyexcel/issues/2804)
+* 默认对象反射缓存改成`ThreadLocal`
+  ,并支持设置反射缓存类型 [Issue #2792](https://github.com/alibaba/easyexcel/issues/2792)
+* 支持根据`includeColumnIndexes`和`includeColumnFieldNames`
+  排序 [Issue #2697](https://github.com/alibaba/easyexcel/issues/2697)
 * 根据文件流解析，由抛出异常改为，默认识别为csv
 
 # 3.2.1
@@ -182,7 +207,8 @@ sidebar_position: 4
 * 修复xls仅公式行 不读取的bug [Issue #1324](https://github.com/alibaba/easyexcel/issues/1324)
 * 修复xls直接读取第2页 `NPE` 的bug [Issue #1280](https://github.com/alibaba/easyexcel/issues/1280)
 * 修复填充的时候，最后一行中间有空行会创建失败的bug
-* 修复`includeColumnIndexes`不包含第列 会无法导出数据的bug [Issue #1346](https://github.com/alibaba/easyexcel/issues/1346)
+* 修复`includeColumnIndexes`不包含第列
+  会无法导出数据的bug [Issue #1346](https://github.com/alibaba/easyexcel/issues/1346)
 * 修复`@NumberFormat`注解转换double时可能会丢失精度 [Issue #1306](https://github.com/alibaba/easyexcel/issues/1306)
 
 ## 2.2.3
@@ -199,11 +225,16 @@ sidebar_position: 4
 
 * 发布正式版
 * 修复第一行为空不会调用`invokeHeadMap`的bug [Issue #993](https://github.com/alibaba/easyexcel/issues/993)
-* 当类的属性没有按照ExcelProperty的属性index顺序排序的时候，写数据出现错乱 [Issue #1046](https://github.com/alibaba/easyexcel/issues/1046)
-* 新增支持自定义转换器 入参可以为空 实现`NullableObjectConverter` 即可  [Issue #1084](https://github.com/alibaba/easyexcel/issues/1084)
+*
+
+当类的属性没有按照ExcelProperty的属性index顺序排序的时候，写数据出现错乱 [Issue #1046](https://github.com/alibaba/easyexcel/issues/1046)
+
+* 新增支持自定义转换器 入参可以为空 实现`NullableObjectConverter`
+  即可  [Issue #1084](https://github.com/alibaba/easyexcel/issues/1084)
 * 修复xls丢失结束标记的情况下 会漏读最后一行
 * 修复填充的时候 多次`forceNewRow` 空指针的bug [Issue #1201](https://github.com/alibaba/easyexcel/issues/1201)
-* 修复`table`、`sheet`中创建的拦截器不执行`workbook`事件的bug [Issue #1202](https://github.com/alibaba/easyexcel/issues/1202)
+* 修复`table`、`sheet`中创建的拦截器不执行`workbook`
+  事件的bug [Issue #1202](https://github.com/alibaba/easyexcel/issues/1202)
 
 ## 2.2.0-beta2
 

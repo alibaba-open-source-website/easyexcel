@@ -122,6 +122,19 @@ sidebar_position: 1
   版本冲突，打开[https://mvnrepository.com/artifact/com.alibaba/easyexcel](https://mvnrepository.com/artifact/com.alibaba/easyexcel)
   ，打开对应的版本，看下所需要的`ehcache`版本
 
+
+### 出现 `java.lang.NoSuchMethodError: 'void org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream.putArchiveEntry(org.apache.commons.compress.archivers.zip.ZipArchiveEntry)'`
+EasyExcel 依赖于比较新的 `commons-io` 版本，这个原因是因为你的项目中引入了比较旧的 `commons-io` 版本
+自己额外引入这个包或者 在 `parent` 的 `dependencyManagement` 里面加入
+```xml
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <!-- 这个版本可以继续往上升 ，但是不要低于这个 -->
+      <version>2.15.0</version>
+    </dependency>
+```
+
 ### 关于版本升级
 
 * 不建议跨大版本升级 尤其跨2个大版本

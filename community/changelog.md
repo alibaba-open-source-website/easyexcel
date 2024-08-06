@@ -3,6 +3,11 @@ title: 更新日志
 sidebar_position: 4
 ---
 
+# 4.0.2
+
+* 兼容某些特殊的xls: 修改了内置的样式导致判断样式错误
+* 重新加回 `commons-io`
+
 # 4.0.1
 
 * `commons-io` 修改为依赖 `poi`的版本

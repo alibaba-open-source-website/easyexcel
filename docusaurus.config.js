@@ -22,13 +22,13 @@ const config = {
     projectName: 'easyexcel', // Usually your repo name.
     scripts: [
         {
-          src: '/javascript/baidu-analytics.js',
+            src: '/javascript/baidu-analytics.js',
         },
         {
-          src: '/javascript/copilot-sidebar.js',
+            src: '/javascript/copilot-sidebar.js',
         },
-        
-      ],
+
+    ],
 
     presets: [
         [
@@ -213,6 +213,17 @@ const config = {
                         docId: 'intro',
                         position: 'right',
                         docsPluginId: 'expert',
+                    },
+                    {
+                        label: '友情连接',
+                        position: 'right',
+                        type: 'dropdown',
+                        items: [
+                            {
+                                href: 'https://xuri.me/excelize/zh-hans ',
+                                label: 'Go语言解析Excel: excelize',
+                            }
+                        ]
                     },
                     {
                         type: 'docsVersionDropdown',

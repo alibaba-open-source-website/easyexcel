@@ -214,17 +214,17 @@ const config = {
                         position: 'right',
                         docsPluginId: 'expert',
                     },
-                    {
-                        label: '友情连接',
-                        position: 'right',
-                        type: 'dropdown',
-                        items: [
-                            {
-                                href: 'https://xuri.me/excelize/zh-hans ',
-                                label: 'Go语言解析Excel: excelize',
-                            }
-                        ]
-                    },
+                    // {
+                    //     label: '友情连接',
+                    //     position: 'right',
+                    //     type: 'dropdown',
+                    //     items: [
+                    //         {
+                    //             href: 'https://xuri.me/excelize/zh-hans ',
+                    //             label: 'Go语言解析Excel: excelize',
+                    //         }
+                    //     ]
+                    // },
                     {
                         type: 'docsVersionDropdown',
                         position: 'right',

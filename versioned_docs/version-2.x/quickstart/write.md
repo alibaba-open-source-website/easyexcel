@@ -493,7 +493,7 @@ public class WidthAndHeightData {
         WriteTable writeTable1 = EasyExcel.writerTable(1).needHead(Boolean.TRUE).build();
         // 第一次写入会创建头
         excelWriter.write(data(), writeSheet, writeTable0);
-        // 第二次写如也会创建头，然后在第一次的后面写入数据
+        // 第二次写入也会创建头，然后在第一次的后面写入数据
         excelWriter.write(data(), writeSheet, writeTable1);
         // 千万别忘记finish 会帮忙关闭流
         excelWriter.finish();

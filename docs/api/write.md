@@ -74,7 +74,7 @@ sidebar_position: 2
 | includeColumnIndexes           | 空     | 只要导出对象中的index的数据                                                                                                                                                                                                                                                                    |
 | includeColumnFieldNames           | 空     | 只要导出对象中的字段的数据                                                                                                                                                                                                                                                                       |
 | orderByIncludeColumn           | false | @since 3.3.0 在使用了参数includeColumnFieldNames 或者 includeColumnIndexes的时候，会根据传入集合的顺序排序                                                                                                                                                                                                  |
-| filedCacheLocation           | THREAD_LOCAL | @since 3.3.0 解析class的field会有缓存，以前全局放到Map里面，3.3.0 以后默认放到ThreadLocal ，也就是说每次读写都会重新解析class，可以反射修改class的注解，并发场景不会相互影像。<br/>  THREAD_LOCAL：默认，每次读写都会缓存，但是不是同一次不会影像<br/>  MEMORY：放到全局的内存里面，理论上性能会更好，但是无法通过反射、排除等方法修改导出的对象<br/> NONE：不缓存，性能会变差，涉及到读的同时要写，而且还要反射、排除等方法区修改对象的情况下可以考虑使用。<br/> |
+| filedCacheLocation           | THREAD_LOCAL | @since 3.3.0 解析class的field会有缓存，以前全局放到Map里面，3.3.0 以后默认放到ThreadLocal ，也就是说每次读写都会重新解析class，可以反射修改class的注解，并发场景不会相互影响。<br/>  THREAD_LOCAL：默认，每次读写都会缓存，但是不是同一次不会影响<br/>  MEMORY：放到全局的内存里面，理论上性能会更好，但是无法通过反射、排除等方法修改导出的对象<br/> NONE：不缓存，性能会变差，涉及到读的同时要写，而且还要反射、排除等方法去修改对象的情况下可以考虑使用。<br/> |
 
 ### WriteWorkbook
 
@@ -126,7 +126,7 @@ sidebar_position: 2
 | 名称 | 默认值 | 描述 |
 |---------------------|-----|---------------------------------|
 | sheetNo | 0 | 需要写入的编码 |
-| sheetName | 空 | 需要些的Sheet名称，默认同`sheetNo`                |
+| sheetName | 空 | 需要写的Sheet名称，默认同`sheetNo`                |
 
 ### WriteTable
 
